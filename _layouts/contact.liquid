@@ -1,0 +1,83 @@
+---
+layout: page
+---
+{%- comment -%}
+  Contact page. Everything on it comes from _data/contact.yml.
+{%- endcomment -%}
+{% assign c = site.data.contact %}
+{% assign q = c.map_query | url_encode %}
+{% assign q_embed = c.map_query | replace: ' ', '+' | replace: '&', 'and' %}
+<div class="nail-subpage">
+  <figure class="nail-contact-photo">
+    <img src="{{ c.photo | prepend: '/assets/img/contact/' | relative_url }}" alt="{{ c.photo_alt | escape }}" width="2000" height="918">
+    <figcaption>{{ c.photo_caption }}</figcaption>
+  </figure>
+
+  <ul class="nail-contact-cards">
+    <li class="nail-contact-card">
+      <span class="nail-contact-icon" aria-hidden="true"><i class="fa-solid fa-user"></i></span>
+      <div>
+        <h2>Lab director</h2>
+        <p>
+          <a class="nail-contact-name" href="{{ c.director.url }}">{{ c.director.name }}</a>
+          {% for line in c.director.lines %}
+            <br>
+            {{ line }}
+          {% endfor %}
+        </p>
+        <p class="nail-contact-links">
+          <a href="mailto:{{ c.director.email }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i>{{ c.director.email }}</a>
+          {% if c.director.phone %}
+            <a href="tel:{{ c.director.phone_link }}"><i class="fa-solid fa-phone" aria-hidden="true"></i>{{ c.director.phone }}</a>
+          {% endif %}
+        </p>
+      </div>
+    </li>
+    <li class="nail-contact-card">
+      <span class="nail-contact-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
+      <div>
+        <h2>Lab address</h2>
+        <address>
+          {% for line in c.address %}
+            {{ line -}}
+            {%- unless forloop.last %}<br>{% endunless %}
+          {% endfor %}
+        </address>
+        <p class="nail-contact-links">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination={{ q }}"
+            ><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i>Get directions</a
+          >
+        </p>
+      </div>
+    </li>
+    <li class="nail-contact-card">
+      <span class="nail-contact-icon" aria-hidden="true"><i class="fa-solid fa-user-graduate"></i></span>
+      <div>
+        <h2>Prospective students</h2>
+        <p>Interested in joining the lab? Learn how to get involved.</p>
+        <p class="nail-contact-links">
+          <a href="{{ '/join/' | relative_url }}"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>Join the lab</a>
+        </p>
+      </div>
+    </li>
+  </ul>
+
+  <section class="nail-subpage-section" aria-labelledby="find-us">
+    <div class="nail-section-head">
+      <h2 id="find-us">Find us</h2>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query={{ q }}"
+        >Open in Google Maps <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i
+      ></a>
+    </div>
+    <p class="nail-section-intro">{{ c.find_us }}</p>
+    <div class="nail-map">
+      <iframe
+        src="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m3!2m1!1s{{ q_embed }}!6i16"
+        title="Map of the NAIL Lab at the University of Houston Sugar Land"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </section>
+</div>

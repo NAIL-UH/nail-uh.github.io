@@ -1,0 +1,80 @@
+# Gallery page (_pages/gallery.md, rendered by _layouts/gallery.liquid).
+# Each photo has a full-size image <image>.jpg and a 4:3 thumbnail
+# <image>-thumb.jpg in assets/img/gallery/; width and height are the full
+# image's size (needed by the PhotoSwipe viewer).
+# style: row (photos side by side), mosaic (first photo large, then four),
+# or feature (one photo beside its description).
+
+intro: >-
+  Moments from the NAIL Lab: conferences, group celebrations, and student milestones. Select a photo to view it full size, and use the
+  arrows or swipe to browse.
+
+sections:
+  - id: icra-2025
+    title: ICRA 2025 in Atlanta, Georgia
+    text: NAIL Lab members presented their research at the IEEE International Conference on Robotics and Automation (ICRA) 2025 in Atlanta, Georgia.
+    style: row
+    photos:
+      - image: icra2025
+        width: 2000
+        height: 1500
+        title: ICRA 2025
+        caption: Lab members at the conference
+      - image: icra-llm
+        width: 2000
+        height: 1500
+        title: LLM-guided navigation
+        caption: Poster on embedded LLM-guided navigation for aerial robots
+      - image: icra-llm1
+        width: 2000
+        height: 1500
+        title: Research discussion
+        caption: Discussing LLM-guided navigation with attendees
+      - image: icra-facet
+        width: 2000
+        height: 1500
+        title: FACETS
+        caption: Poster on efficient once-for-all object detection
+
+  - id: group-events
+    title: Lab group events
+    text: The lab celebrates achievements and milestones together at regular group gatherings.
+    style: mosaic
+    photos:
+      - image: 2026-spring
+        width: 2000
+        height: 1500
+        title: Spring 2026
+        caption: Group lunch celebrating a successful semester and Tony's graduation
+      - image: 2025-fall
+        width: 2000
+        height: 1500
+        title: Fall 2025
+        caption: End-of-semester celebration
+      - image: 2025-spring
+        width: 2000
+        height: 1500
+        title: Spring 2025
+        caption: Group dinner
+      - image: 2024-spring
+        width: 2000
+        height: 1500
+        title: Spring 2024
+        caption: Semester celebration dinner
+      - image: 2023-fall
+        width: 2000
+        height: 1500
+        title: Fall 2023
+        caption: Lab group gathering
+
+  - id: defenses
+    title: Thesis and dissertation defenses
+    text: Milestone moments from NAIL Lab thesis and dissertation defenses.
+    style: feature
+    photos:
+      - image: tony-tran-ms-2026
+        width: 1800
+        height: 1341
+        title: Tony Tran, M.S. defense
+        period: Spring 2026
+        caption: Efficient Iterative Neural Architecture Search for Object Detection on IoT Devices

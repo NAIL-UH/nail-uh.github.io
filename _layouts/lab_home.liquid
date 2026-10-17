@@ -97,10 +97,14 @@ layout: default
                       {% assign link_icon = 'fa-brands fa-github' %}
                     {% when 'Demo video' %}
                       {% assign link_icon = 'fa-brands fa-youtube' %}
+                    {% when 'Poster' %}
+                      {% assign link_icon = 'fa-solid fa-file-image' %}
                     {% else %}
                       {% assign link_icon = 'fa-solid fa-link' %}
                   {% endcase %}
-                  <a class="nail-chip" href="{{ link.url }}"><i class="{{ link_icon }}" aria-hidden="true"></i> {{ link.label }}</a>
+                  <a class="nail-chip" href="{% if link.url contains '://' %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}"
+                    ><i class="{{ link_icon }}" aria-hidden="true"></i> {{ link.label -}}
+                  </a>
                 {% endfor %}
               </div>
             {% endif %}

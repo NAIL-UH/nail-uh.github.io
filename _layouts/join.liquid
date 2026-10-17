@@ -1,0 +1,87 @@
+---
+layout: page
+---
+{%- comment -%}
+  Join page. Everything on it comes from _data/join.yml; the research
+  direction tiles come from _data/research.yml.
+{%- endcomment -%}
+{% assign j = site.data.join %}
+<div class="nail-subpage">
+  <section class="nail-join-banner" aria-labelledby="join-intro">
+    <span class="nail-contact-icon" aria-hidden="true"><i class="fa-solid fa-users"></i></span>
+    <div>
+      <h2 id="join-intro">{{ j.intro.title }}</h2>
+      <p>{{ j.intro.text }}</p>
+      <div class="nail-actions">
+        <a class="nail-btn nail-btn-filled" href="mailto:{{ j.email }}">Email Dr. Hu</a>
+        <a class="nail-btn nail-btn-outline" href="{{ '/contact/' | relative_url }}">Contact information</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="nail-subpage-section" aria-labelledby="get-involved">
+    <div class="nail-section-head">
+      <h2 id="get-involved">Ways to get involved</h2>
+    </div>
+    <ul class="nail-contact-cards nail-cards-2">
+      {% for way in j.ways %}
+        <li class="nail-contact-card">
+          <span class="nail-contact-icon" aria-hidden="true"><i class="fa-solid {{ way.icon }}"></i></span>
+          <div>
+            <h3>{{ way.title }}</h3>
+            <p>{{ way.text }}</p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="nail-subpage-section" aria-labelledby="directions">
+    <div class="nail-section-head">
+      <h2 id="directions">Our research directions</h2>
+      <a href="{{ '/research/' | relative_url }}">All research <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+    <ul class="nail-dir-grid nail-dir-grid-flush" aria-label="Research directions">
+      {% for area in site.data.research.areas %}
+        <li class="nail-dir-tile">
+          <a href="{{ area.url | relative_url }}">
+            <span class="nail-dir-media">
+              <img src="{{ area.image | prepend: '/assets/img/research/' | relative_url }}" alt="" width="765" height="510" loading="lazy">
+            </span>
+            <span class="nail-dir-body">
+              <span class="nail-dir-num">Direction {{ forloop.index }}</span>
+              <span class="nail-dir-title">{{ area.title }}</span>
+            </span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="nail-subpage-section" aria-labelledby="get-in-touch">
+    <div class="nail-section-head">
+      <h2 id="get-in-touch">How to get in touch</h2>
+    </div>
+    <ol class="nail-steps">
+      {% for step in j.steps %}
+        <li>
+          <span class="nail-step-num" aria-hidden="true">{{ forloop.index }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.text }}</p>
+          {% if step.links %}
+            <p class="nail-contact-links">
+              {% for link in step.links %}
+                <a href="{{ link.url | relative_url }}"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>{{ link.label }}</a>
+              {% endfor %}
+            </p>
+          {% endif %}
+          {% if forloop.index == 2 %}
+            <p class="nail-contact-links">
+              <a href="mailto:{{ j.email }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i>{{ j.email }}</a>
+            </p>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+</div>

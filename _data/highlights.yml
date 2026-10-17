@@ -9,7 +9,8 @@
 # description: one or two short sentences: the problem it solves, then the
 #              measured gain in numbers.
 # links:       buttons under the description. Labels "Paper", "Project page",
-#              "Code" and "Demo video" get matching icons.
+#              "Code", "Demo video" and "Poster" get matching icons. Site paths
+#              (starting with /) are fine.
 
 - media: corl2026-cert-replan.mp4
   poster: corl2026-cert-replan.jpg
@@ -47,18 +48,17 @@
     - label: Project page
       url: https://nail-uh.github.io/iros2026.github.io/
 
-# PLACEHOLDER: this Neural-ESO card will be replaced with another paper.
-- media: neural_eso.png
-  play_url: https://www.youtube.com/watch?v=KVUX0SVO-dA
-  alt: Neural-ESO architecture diagram. Opens the demo video on YouTube.
-  badge: IEEE RA-L 2026
-  title: "Neural-ESO: provably robust learning-based control"
-  description: "Pairs a learned disturbance model with a classical observer, so drone control gains from learning without over-trusting it. Cuts landing error under ground effect to 0.37 cm, 80% below an observer alone."
+- media: icra2025-llm-drone.mp4
+  poster: icra2025-llm-drone.jpg
+  alt: After a typed language command, a lab drone flies to a chair and an umbrella and then returns home, with its onboard camera view and detections inset
+  badge: ICRA-LBS 2025
+  title: LLM-guided drone navigation and object detection
+  description: "Turns a natural-language command into a multi-step drone mission. A 1B-parameter Llama model, LoRA-tuned on 4,500 prompts (about 3.5% of its weights), plans the flight while onboard detection runs at up to about 25 FPS."
   links:
-    - label: Paper
-      url: https://arxiv.org/abs/2607.06535
     - label: Demo video
-      url: https://www.youtube.com/watch?v=KVUX0SVO-dA
+      url: https://www.youtube.com/watch?v=uHh0LyTN1c0
+    - label: Poster
+      url: /assets/pdf/LLM.pdf
 
 - media: tc2026-elastic-max78000.mp4
   poster: tc2026-elastic-max78000.jpg

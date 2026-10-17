@@ -1,0 +1,79 @@
+---
+layout: page
+---
+{%- comment -%}
+  Photo gallery. Everything on it comes from _data/gallery.yml. Each section is
+  a PhotoSwipe gallery (front matter `images: photoswipe: true`): selecting a
+  thumbnail opens the full-size photo with arrow and swipe navigation.
+{%- endcomment -%}
+{% assign gal = site.data.gallery %}
+{% assign img_dir = '/assets/img/gallery/' %}
+<div class="nail-subpage">
+  <p class="nail-page-intro">{{ gal.intro }}</p>
+
+  {% for section in gal.sections %}
+    <section class="nail-subpage-section" aria-labelledby="{{ section.id }}">
+      <div class="nail-section-head">
+        <h2 id="{{ section.id }}">{{ section.title }}</h2>
+      </div>
+      <p class="nail-section-intro">{{ section.text }}</p>
+
+      {% if section.style == 'feature' %}
+        {% for photo in section.photos %}
+          <article class="nail-photo-feature">
+            <div class="pswp-gallery nail-photo-feature-media">
+              <a
+                class="nail-photo"
+                href="{{ photo.image | prepend: img_dir | append: '.jpg' | relative_url }}"
+                data-pswp-width="{{ photo.width }}"
+                data-pswp-height="{{ photo.height }}"
+                target="_blank"
+                rel="noopener"
+              >
+                <img
+                  src="{{ photo.image | prepend: img_dir | append: '-thumb.jpg' | relative_url }}"
+                  alt="{{ photo.title | escape }}: {{ photo.caption | escape }}"
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                >
+              </a>
+            </div>
+            <div class="nail-photo-feature-body">
+              {% if photo.period %}
+                <p class="nail-activity-period">{{ photo.period }}</p>
+              {% endif %}
+              <h3>{{ photo.title }}</h3>
+              <p>{{ photo.caption }}</p>
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        <div class="pswp-gallery nail-gallery nail-gallery-{{ section.style }}">
+          {% for photo in section.photos %}
+            <a
+              class="nail-photo"
+              href="{{ photo.image | prepend: img_dir | append: '.jpg' | relative_url }}"
+              data-pswp-width="{{ photo.width }}"
+              data-pswp-height="{{ photo.height }}"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="{{ photo.image | prepend: img_dir | append: '-thumb.jpg' | relative_url }}"
+                alt="{{ photo.title | escape }}: {{ photo.caption | escape }}"
+                width="800"
+                height="600"
+                loading="lazy"
+              >
+              <span class="nail-photo-caption" aria-hidden="true">
+                <strong>{{ photo.title }}</strong>
+                <span>{{ photo.caption }}</span>
+              </span>
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </section>
+  {% endfor %}
+</div>

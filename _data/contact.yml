@@ -1,0 +1,28 @@
+# Contact page (_pages/contact.md, rendered by _layouts/contact.liquid).
+
+photo: uh-sugar-land.jpg
+photo_alt: Engineering Building 4 (SAB2) and Engineering Building 3 (SAB1) on the University of Houston Sugar Land campus.
+photo_caption: Engineering Building 4 (SAB2) on the left and Engineering Building 3 (SAB1) on the right, University of Houston Sugar Land campus
+
+director:
+  name: Dr. Bin Hu
+  url: https://binhu85.github.io/
+  email: bhu12@uh.edu
+  phone: (713) 743-5366
+  phone_link: "+17137435366"
+  lines:
+    - Department of Engineering Technology
+    - University of Houston
+
+address:
+  - Engineering Building 4 (SAB2), Room 111
+  - University of Houston Sugar Land
+  - 13850 University Blvd
+  - Sugar Land, TX 77479
+
+find_us: >-
+  The NAIL Lab is located on the University of Houston Sugar Land campus, with research facilities for AI-driven robotics and networked
+  autonomous intelligent learning systems.
+
+# Used for the embedded map and the Google Maps links.
+map_query: University of Houston Sugar Land, 13850 University Blvd, Sugar Land, TX 77479

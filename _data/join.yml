@@ -1,5 +1,34 @@
-# "Join the lab" text, shown on the home page. Each paragraph is Markdown.
+# Join page (_pages/join.md, rendered by _layouts/join.liquid). `email` is
+# also used by the Team, Facilities, Outreach, and Contact pages.
 email: bhu12@uh.edu
-paragraphs:
-  - "**Graduate students.** We have multiple openings for students interested in control, optimization, machine learning, robotics, and autonomous vehicles. Please send your CV and transcript to Dr. Hu by email."
-  - "**Undergraduates.** Join our AI-powered drone or race car project teams and get hands-on experience with real autonomous systems."
+
+intro:
+  title: We are always looking for talented people
+  text: >-
+    We are always looking for talented and motivated people who are passionate about research in intelligent and networked autonomous
+    systems. If you are interested, please contact Dr. Bin Hu about opportunities.
+
+ways:
+  - icon: fa-user-graduate
+    title: Graduate students
+    text: >-
+      Ph.D. and master's students with interests in control, optimization, machine learning, and robotics are welcome to reach out about
+      research in any of our four research directions.
+  - icon: fa-screwdriver-wrench
+    title: Undergraduate students
+    text: >-
+      Undergraduates can gain hands-on experience with real autonomous systems through our research projects and our AI-powered drone and
+      race car project teams.
+
+steps:
+  - title: Explore our research
+    text: Read about our four research directions and recent publications to find the work that interests you most.
+    links:
+      - label: Research
+        url: /research/
+      - label: Publications
+        url: /publications/
+  - title: Email Dr. Hu
+    text: Send a short note about your background and the research direction that interests you, and attach your CV.
+  - title: Discuss opportunities
+    text: If your interests match our research, we will follow up to discuss how you could get involved.

@@ -1,12 +1,10 @@
 ---
-layout: page
+layout: join
 permalink: /join/
 title: Join
 description:
 nav: true
-nav_order: 6
+nav_order: 7
 ---
 
-<!-- Placeholder created in Phase 0 so the navbar is complete. Filled in during Phase 4. -->
-
-This page is under construction.
+<!-- Content comes from _data/join.yml and is laid out by _layouts/join.liquid. -->

@@ -19,22 +19,22 @@
 @media (max-width: 1199.98px) {
   :root {
     --nail-logo-h: 72px;
-    --nail-nav-font: 1.2rem;
-    --nail-nav-pad: 0.6rem;
+    --nail-nav-font: 1.12rem;
+    --nail-nav-pad: 0.48rem;
     --nail-nav-h: 99px;
   }
 }
 
+// Below 992px the menu collapses behind the hamburger, so the links can stay large.
 @media (max-width: 991.98px) {
   :root {
     --nail-logo-h: 64px;
-    --nail-nav-font: 1.1rem;
-    --nail-nav-pad: 0.45rem;
+    --nail-nav-font: 1.25rem;
+    --nail-nav-pad: 0.3rem;
     --nail-nav-h: 91px;
   }
 }
 
-// Below 768px the menu collapses behind the hamburger, so the links can stay large.
 @media (max-width: 767.98px) {
   :root {
     --nail-logo-h: 56px;
@@ -44,10 +44,10 @@
   }
 }
 
-// The gem collapses the menu only below 576px. Between 576px and 768px the
-// five links no longer fit beside the larger logo, so collapse there too,
-// mirroring the gem's own small-screen navbar rules.
-@media (min-width: 576px) and (max-width: 767.98px) {
+// The gem collapses the menu only below 576px. Between 576px and 992px the
+// eight links no longer fit beside the logo, so collapse there too, mirroring
+// the gem's own small-screen navbar rules.
+@media (min-width: 576px) and (max-width: 991.98px) {
   .navbar.navbar-expand-sm {
     .navbar-toggler {
       display: block;
@@ -94,7 +94,7 @@ html[data-theme="dark"] .navbar .navbar-brand.nail-brand img {
   font-weight: 400;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .navbar.navbar-light .navbar-nav .nav-item .nav-link {
     padding-right: var(--nail-nav-pad);
     padding-left: var(--nail-nav-pad);
@@ -123,7 +123,7 @@ body h6 {
 // !important rule in a layer beats an unlayered one. So the rule that hides
 // the closed menu has to live in the same layer, with a more specific selector.
 @layer components {
-  @media (min-width: 576px) and (max-width: 767.98px) {
+  @media (min-width: 576px) and (max-width: 991.98px) {
     .navbar.navbar-expand-sm .navbar-collapse:not(.show) {
       display: none !important;
     }
@@ -696,7 +696,7 @@ html[data-theme="dark"] {
 
 .nail-pub-note {
   margin: 0 0 1.25rem;
-  font-size: 1rem;
+  font-size: 1.08rem;
   line-height: 1.6;
 }
 
@@ -840,19 +840,21 @@ img.medium-zoom-image--opened {
   min-width: 0;
 
   .title {
-    font-size: 1.05rem;
+    font-size: 1.22rem;
     font-weight: 500;
     line-height: 1.4;
   }
 
   .author {
-    margin-top: 0.15rem;
-    line-height: 1.5;
+    margin-top: 0.25rem;
+    font-size: 1.08rem;
+    line-height: 1.55;
   }
 
   .periodical {
-    margin-top: 0.1rem;
-    line-height: 1.5;
+    margin-top: 0.15rem;
+    font-size: 1.05rem;
+    line-height: 1.55;
   }
 }
 
@@ -873,15 +875,15 @@ img.medium-zoom-image--opened {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    min-height: 34px;
+    min-height: 36px;
     margin: 0;
-    padding: 0.25rem 0.95rem;
+    padding: 0.3rem 1rem;
     border: 1px solid var(--global-text-color);
     border-radius: 3px;
     background-color: transparent;
     box-shadow: none;
     color: var(--global-text-color);
-    font-size: 0.75rem;
+    font-size: 0.82rem;
     font-weight: 700;
     letter-spacing: 0.03em;
     line-height: 1.2;
@@ -975,10 +977,9 @@ img.medium-zoom-image--opened {
 /* Research overview and research direction pages ------------------------- */
 
 .nail-research-intro {
-  max-width: 54rem;
-  margin: 0 0 1.75rem;
-  font-size: 1.1rem;
-  line-height: 1.7;
+  margin: 0 0 2rem;
+  font-size: 1.15rem;
+  line-height: 1.75;
 }
 
 // Overview: one card per research direction, two per row.
@@ -1043,7 +1044,7 @@ img.medium-zoom-image--opened {
 
   h2 {
     margin: 0.35rem 0 0.6rem;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 500;
     line-height: 1.3;
 
@@ -1060,8 +1061,8 @@ img.medium-zoom-image--opened {
 
   p {
     margin: 0 0 0.9rem;
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.1rem;
+    line-height: 1.65;
   }
 }
 
@@ -1192,8 +1193,8 @@ a.nail-area-more {
 
 .nail-area-lead {
   margin: 0 0 1.1rem;
-  font-size: 1.08rem;
-  line-height: 1.7;
+  font-size: 1.15rem;
+  line-height: 1.75;
 }
 
 .nail-area-themes {
@@ -1203,9 +1204,10 @@ a.nail-area-more {
 
   li {
     position: relative;
-    margin-bottom: 0.45rem;
+    margin-bottom: 0.5rem;
     padding-left: 1.5rem;
-    line-height: 1.55;
+    font-size: 1.06rem;
+    line-height: 1.6;
 
     &::before {
       content: "";
@@ -1469,8 +1471,8 @@ a.nail-area-more {
 }
 
 .nail-team-subhead {
-  margin: 2rem 0 1rem;
-  font-size: 1.35rem;
+  margin: 2.25rem 0 1.1rem;
+  font-size: 1.55rem;
   font-weight: 500;
   color: var(--global-text-color);
 
@@ -1481,7 +1483,7 @@ a.nail-area-more {
 
 .nail-member-name {
   margin: 0 0 0.2rem;
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   font-weight: 500;
   line-height: 1.35;
 
@@ -1497,7 +1499,7 @@ a.nail-area-more {
 
 .nail-member-meta {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 1.04rem;
   line-height: 1.5;
   color: var(--global-text-color-light);
 }
@@ -1513,7 +1515,7 @@ a.nail-area-more {
     align-items: center;
     gap: 0.4rem;
     min-height: 44px;
-    font-size: 0.95rem;
+    font-size: 1.02rem;
     overflow-wrap: anywhere;
   }
 }
@@ -1590,14 +1592,16 @@ a.nail-area-more {
 }
 
 .nail-member-research {
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.4rem;
+  font-size: 1.12rem;
   font-weight: 500;
   color: var(--global-theme-color);
 }
 
 .nail-member-desc {
   margin: 0;
-  line-height: 1.6;
+  font-size: 1.08rem;
+  line-height: 1.65;
 }
 
 // Publication tags: small pills that link to each paper's page or video.
@@ -1612,10 +1616,10 @@ a.nail-area-more {
   a {
     position: relative;
     display: inline-block;
-    padding: 0.2rem 0.6rem;
+    padding: 0.25rem 0.7rem;
     border: 1px solid var(--global-theme-color);
     border-radius: 999px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 500;
     line-height: 1.4;
     color: var(--global-theme-color);
@@ -1667,8 +1671,8 @@ a.nail-area-more {
 }
 
 .nail-project-kind {
-  margin: 0 0 0.2rem;
-  font-size: 0.8rem;
+  margin: 0 0 0.25rem;
+  font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1693,6 +1697,7 @@ a.nail-area-more {
 
 .nail-alumni-now {
   margin: 0.3rem 0 0;
+  font-size: 1.08rem;
 
   span {
     font-weight: 500;
@@ -1706,8 +1711,9 @@ a.nail-area-more {
   padding: 0 0 0 1.1rem;
 
   li {
-    margin-bottom: 0.45rem;
-    line-height: 1.55;
+    margin-bottom: 0.5rem;
+    font-size: 1.08rem;
+    line-height: 1.6;
     break-inside: avoid;
   }
 
@@ -1722,10 +1728,9 @@ a.nail-area-more {
 }
 
 .nail-team-text {
-  max-width: 54rem;
   margin: 0 0 1.25rem;
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-size: 1.12rem;
+  line-height: 1.75;
 }
 
 @media (max-width: 767.98px) {
@@ -1861,9 +1866,8 @@ a.nail-area-more {
 /* Facilities and Outreach pages -------------------------------------------- */
 
 .nail-page-intro {
-  max-width: 56rem;
   margin: 0 0 2rem;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   line-height: 1.75;
 }
 
@@ -1876,10 +1880,9 @@ a.nail-area-more {
 }
 
 .nail-section-intro {
-  max-width: 56rem;
   margin: 0 0 1.5rem;
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-size: 1.12rem;
+  line-height: 1.75;
 }
 
 // Key numbers in a row of equal tiles.
@@ -1911,29 +1914,36 @@ a.nail-area-more {
 }
 
 .nail-stat-label {
-  font-size: 0.95rem;
+  font-size: 1.04rem;
   line-height: 1.45;
   color: var(--global-text-color-light);
 }
 
-// A large photo beside its description.
+// A large photo beside its description. The photo fills exactly the height of
+// the text column, so the two line up top and bottom.
 .nail-feature {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
   gap: 2.5rem;
-  align-items: center;
+  align-items: stretch;
 }
 
 .nail-feature-media {
+  position: relative;
+  min-height: 320px;
   margin: 0;
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   img {
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 70%;
   }
 }
 
@@ -1947,8 +1957,8 @@ a.nail-area-more {
   }
 
   > p {
-    font-size: 1.05rem;
-    line-height: 1.7;
+    font-size: 1.12rem;
+    line-height: 1.75;
   }
 }
 
@@ -1957,9 +1967,10 @@ a.nail-area-more {
 
   div {
     display: grid;
-    grid-template-columns: 10rem minmax(0, 1fr);
+    grid-template-columns: 10.5rem minmax(0, 1fr);
     gap: 1rem;
-    padding: 0.7rem 0;
+    padding: 0.75rem 0;
+    font-size: 1.06rem;
     border-top: 1px solid var(--global-divider-color);
   }
 
@@ -2032,8 +2043,8 @@ a.nail-area-more {
   padding: 0.85rem 1rem 1rem;
 
   h3 {
-    margin: 0 0 0.35rem;
-    font-size: 1.02rem;
+    margin: 0 0 0.4rem;
+    font-size: 1.15rem;
     font-weight: 500;
     line-height: 1.35;
     color: var(--global-text-color);
@@ -2041,8 +2052,8 @@ a.nail-area-more {
 
   p {
     margin: 0;
-    font-size: 0.92rem;
-    line-height: 1.55;
+    font-size: 1.02rem;
+    line-height: 1.6;
     color: var(--global-text-color-light);
   }
 }
@@ -2059,8 +2070,8 @@ a.nail-area-more {
 
 .nail-video-card {
   h3 {
-    margin: 0.8rem 0 0.3rem;
-    font-size: 1.05rem;
+    margin: 0.85rem 0 0.35rem;
+    font-size: 1.18rem;
     font-weight: 500;
     line-height: 1.35;
     color: var(--global-text-color);
@@ -2068,8 +2079,8 @@ a.nail-area-more {
 
   p {
     margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.55;
+    font-size: 1.04rem;
+    line-height: 1.6;
     color: var(--global-text-color-light);
   }
 }
@@ -2169,8 +2180,8 @@ a.nail-area-more {
   padding: 1rem 1.25rem 1.2rem;
 
   h3 {
-    margin: 0 0 0.4rem;
-    font-size: 1.1rem;
+    margin: 0 0 0.45rem;
+    font-size: 1.28rem;
     font-weight: 500;
     line-height: 1.35;
     color: var(--global-text-color);
@@ -2178,14 +2189,14 @@ a.nail-area-more {
 
   p {
     margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 1.08rem;
+    line-height: 1.65;
   }
 }
 
 .nail-activity-period {
-  margin: 0 0 0.3rem !important;
-  font-size: 0.78rem !important;
+  margin: 0 0 0.35rem !important;
+  font-size: 0.85rem !important;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2206,8 +2217,8 @@ a.nail-area-more {
 }
 
 .nail-subpage-contact p {
-  max-width: 56rem;
-  font-size: 1.05rem;
+  font-size: 1.12rem;
+  line-height: 1.75;
 }
 
 @media (max-width: 991.98px) {
@@ -2223,7 +2234,8 @@ a.nail-area-more {
   }
 
   .nail-feature-media {
-    max-width: 520px;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
   }
 
   .nail-video-grid {
@@ -2246,5 +2258,359 @@ a.nail-area-more {
   .nail-spec-list div {
     grid-template-columns: minmax(0, 1fr);
     gap: 0.15rem;
+  }
+}
+
+/* Gallery page ------------------------------------------------------------- */
+
+// Thumbnails open in PhotoSwipe. "row": four across. "mosaic": the first photo
+// large (two by two), then four small ones, so both rows fill.
+.nail-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.nail-gallery-mosaic > .nail-photo:first-child {
+  grid-row: span 2;
+  grid-column: span 2;
+  aspect-ratio: auto;
+
+  .nail-photo-caption {
+    padding: 2.5rem 1.25rem 1.1rem;
+
+    strong {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+.nail-photo {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #0b0a1f;
+  color: #fff;
+  text-decoration: none;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+  }
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    text-decoration: none;
+
+    img {
+      transform: scale(1.04);
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--global-theme-color);
+    outline-offset: 3px;
+  }
+}
+
+.nail-photo-caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 2rem 0.9rem 0.8rem;
+  background: linear-gradient(to top, rgba(9, 8, 28, 0.85), rgba(9, 8, 28, 0));
+  line-height: 1.35;
+
+  // Theme rules color spans and strong text; captions sit on a dark band.
+  &,
+  strong,
+  span {
+    color: #fff;
+  }
+
+  strong {
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
+
+  span {
+    font-size: 0.92rem;
+    opacity: 0.92;
+  }
+}
+
+// One photo beside its description (e.g. a thesis defense).
+.nail-photo-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 2rem;
+  padding: 1.25rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 12px;
+  background-color: var(--global-card-bg-color);
+}
+
+.nail-photo-feature-body {
+  h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--global-text-color);
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.65;
+  }
+}
+
+/* Contact page ------------------------------------------------------------- */
+
+.nail-contact-photo {
+  margin: 0 0 2rem;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  }
+
+  figcaption {
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    font-style: italic;
+    text-align: center;
+    color: var(--global-text-color-light);
+  }
+}
+
+.nail-contact-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nail-contact-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--global-divider-color);
+  border-top: 3px solid var(--global-theme-color);
+  border-radius: 12px;
+  background-color: var(--global-card-bg-color);
+
+  h2,
+  h3 {
+    margin: 0.2rem 0 0.6rem;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--global-text-color);
+  }
+
+  p,
+  address {
+    margin: 0 0 0.5rem;
+    font-size: 1.08rem;
+    font-style: normal;
+    line-height: 1.65;
+  }
+}
+
+.nail-contact-icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--global-theme-color);
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.nail-contact-name {
+  font-weight: 500;
+}
+
+.nail-contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.2rem;
+  margin-bottom: 0 !important;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 44px;
+    overflow-wrap: anywhere;
+  }
+}
+
+.nail-map {
+  position: relative;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 12px;
+  background-color: var(--global-card-bg-color);
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .nail-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nail-gallery-mosaic > .nail-photo:first-child {
+    grid-row: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .nail-photo-feature,
+  .nail-contact-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nail-map {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .nail-gallery {
+    gap: 0.6rem;
+  }
+
+  .nail-photo-caption {
+    padding: 1.5rem 0.6rem 0.5rem;
+
+    span {
+      display: none;
+    }
+  }
+}
+
+/* Join page ---------------------------------------------------------------- */
+
+// Status message at the top, on a light tint of the theme color.
+.nail-join-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.75rem 2rem;
+  border: 1px solid var(--global-divider-color);
+  border-left: 5px solid var(--global-theme-color);
+  border-radius: 12px;
+  background-color: color-mix(in srgb, var(--global-theme-color) 6%, var(--global-bg-color));
+
+  h2 {
+    margin: 0.35rem 0 0.6rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--global-text-color);
+  }
+
+  p {
+    margin: 0 0 1.25rem;
+    font-size: 1.15rem;
+    line-height: 1.75;
+  }
+
+  .nail-actions {
+    margin-bottom: 0;
+  }
+}
+
+.nail-contact-cards.nail-cards-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.nail-dir-grid.nail-dir-grid-flush {
+  margin: 0;
+}
+
+// Numbered steps, three across.
+.nail-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 1.4rem 1.5rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 12px;
+    background-color: var(--global-card-bg-color);
+  }
+
+  h3 {
+    margin: 0.85rem 0 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--global-text-color);
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.08rem;
+    line-height: 1.65;
+  }
+
+  .nail-contact-links {
+    margin-top: 0.4rem;
+  }
+}
+
+.nail-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: var(--global-theme-color);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+@media (max-width: 991.98px) {
+  .nail-steps,
+  .nail-contact-cards.nail-cards-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .nail-join-banner {
+    flex-direction: column;
+    padding: 1.4rem 1.25rem;
   }
 }
