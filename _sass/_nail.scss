@@ -668,12 +668,6 @@ html[data-theme="dark"] {
   }
 }
 
-.nail-news-hint {
-  margin: 0.6rem 0 0;
-  font-size: 0.9rem;
-  color: var(--global-text-color-light);
-}
-
 .nail-timeline-page {
   margin-top: 1rem;
 }
@@ -2612,5 +2606,120 @@ a.nail-area-more {
   .nail-join-banner {
     flex-direction: column;
     padding: 1.4rem 1.25rem;
+  }
+}
+
+/* Footer ------------------------------------------------------------------- */
+
+// Three columns (lab address, contact, follow) and a copyright line, on the
+// page background (white in light mode) with a divider above.
+.nail-footer {
+  border-top: 1px solid var(--global-divider-color);
+  background-color: var(--global-bg-color);
+  color: var(--global-text-color);
+  font-size: 1rem;
+  line-height: 1.6;
+
+  a {
+    color: var(--global-text-color);
+
+    &:hover,
+    &:focus {
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+  }
+}
+
+.nail-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+.nail-footer-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--global-text-color);
+}
+
+// Every footer line sits on the same 2.25rem row, so the address lines, the
+// contact rows, and the follow links line up across the three columns.
+.nail-footer-address,
+.nail-footer-row {
+  --nail-row: 2.25rem;
+  display: flex;
+  gap: 0.7rem;
+  margin: 0;
+  font-style: normal;
+  line-height: var(--nail-row);
+  color: var(--global-text-color);
+
+  i {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 1.15rem;
+    height: var(--nail-row);
+    color: var(--global-theme-color);
+  }
+
+  span {
+    color: var(--global-text-color);
+  }
+}
+
+.nail-footer-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nail-footer-row {
+  position: relative;
+  align-items: center;
+  min-height: var(--nail-row);
+}
+
+// Links are 36px tall to keep the rows even; the ::after extends each tap
+// area to 44px.
+a.nail-footer-row::after {
+  content: "";
+  position: absolute;
+  inset: -4px 0;
+}
+
+.nail-footer-bottom {
+  margin: 0;
+  padding-top: 1rem;
+  padding-bottom: 1.75rem;
+  border-top: 1px solid var(--global-divider-color);
+  font-size: 0.9rem;
+  color: var(--global-text-color-light);
+
+  a {
+    color: var(--global-theme-color);
+  }
+}
+
+// Between 992px and 1200px, equal columns are too narrow for the building
+// lines; size the columns to their content instead so no line wraps.
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .nail-footer-grid {
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .nail-footer-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    padding-top: 2.25rem;
   }
 }

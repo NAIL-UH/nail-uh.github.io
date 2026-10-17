@@ -1,0 +1,10 @@
+{%- comment -%}
+  One address from _data/contact.yml: the building with the given room, then
+  the street lines, separated by <br>. Parameter: room (e.g. "Room 111").
+{%- endcomment -%}
+{%- assign nail_addr = site.data.contact -%}
+{{- nail_addr.building }}, {{ include.room -}}
+{%- for line in nail_addr.street -%}
+  <br>
+  {{ line }}
+{%- endfor -%}

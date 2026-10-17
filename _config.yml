@@ -9,13 +9,7 @@ last_name: Lab
 contact_note:
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   We study safe and trustworthy autonomy, learning-based control, and efficient machine learning, and we test our methods on ground robots, drones, quadrupeds, and microcontrollers.
-footer_text: >
-  University of Houston.<br>
-  Cullen College of Engineering, University of Houston, 14000 University Blvd., Sugar Land, TX 77479<br>
-  <a href="mailto:bhu12@uh.edu">bhu12@uh.edu</a> &middot; <a href="tel:+17137435366">(713) 743-5366</a><br>
-  <a href="https://www.youtube.com/@NAIL-UH">YouTube</a> &middot;
-  <a href="https://github.com/NAIL-UH">GitHub</a> &middot;
-  <a href="https://binhu85.github.io/">Dr. Hu's personal site</a>
+footer_text: # not used: the footer comes from _data/footer.yml (see _includes/footer.liquid)
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)

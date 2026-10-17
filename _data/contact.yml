@@ -10,12 +10,14 @@ director:
   email: bhu12@uh.edu
   phone: (713) 743-5366
   phone_link: "+17137435366"
-  lines:
-    - Department of Engineering Technology
-    - University of Houston
+  department: Department of Engineering Technology
+  office_room: Room 301
 
-address:
-  - Engineering Building 4 (SAB2), Room 111
+# The lab and Dr. Hu's office share the building and street; only the room differs.
+# Used on the Contact page and in the footer (_includes/nail_address.liquid).
+building: Engineering Building 4 (SAB2)
+lab_room: Room 111
+street:
   - University of Houston Sugar Land
   - 13850 University Blvd
   - Sugar Land, TX 77479

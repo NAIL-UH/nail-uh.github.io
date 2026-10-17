@@ -1,0 +1,28 @@
+# Site footer (_includes/footer.liquid): three columns and a copyright line.
+# Icons are Font Awesome class names.
+
+lab:
+  title: NAIL Lab
+  icon: fa-solid fa-location-dot
+  # The address comes from _data/contact.yml (the Contact page), so the two always match.
+
+contact:
+  title: Contact # name, office, email, and phone come from _data/contact.yml (director)
+
+follow:
+  title: Follow
+  items:
+    - icon: fa-brands fa-youtube
+      label: YouTube
+      url: https://www.youtube.com/@NAIL-UH
+    - icon: fa-brands fa-github
+      label: GitHub
+      url: https://github.com/NAIL-UH
+    - icon: fa-solid fa-globe
+      label: Dr. Hu's website
+      url: https://binhu85.github.io/
+    - icon: fa-brands fa-linkedin
+      label: LinkedIn
+      url: https://www.linkedin.com/in/bin-hu-a338902b/
+
+copyright: NAIL Lab, University of Houston.

@@ -19,12 +19,10 @@ layout: page
       <div>
         <h2>Lab director</h2>
         <p>
-          <a class="nail-contact-name" href="{{ c.director.url }}">{{ c.director.name }}</a>
-          {% for line in c.director.lines %}
-            <br>
-            {{ line }}
-          {% endfor %}
+          <a class="nail-contact-name" href="{{ c.director.url }}">{{ c.director.name }}</a><br>
+          {{ c.director.department }}
         </p>
+        <address>{% include nail_address.liquid room=c.director.office_room %}</address>
         <p class="nail-contact-links">
           <a href="mailto:{{ c.director.email }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i>{{ c.director.email }}</a>
           {% if c.director.phone %}
@@ -37,12 +35,7 @@ layout: page
       <span class="nail-contact-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
       <div>
         <h2>Lab address</h2>
-        <address>
-          {% for line in c.address %}
-            {{ line -}}
-            {%- unless forloop.last %}<br>{% endunless %}
-          {% endfor %}
-        </address>
+        <address>{% include nail_address.liquid room=c.lab_room %}</address>
         <p class="nail-contact-links">
           <a href="https://www.google.com/maps/dir/?api=1&amp;destination={{ q }}"
             ><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i>Get directions</a

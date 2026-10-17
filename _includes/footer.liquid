@@ -1,0 +1,58 @@
+{%- comment -%}
+  Lab footer, replacing the gem's footer.liquid: three columns (lab address,
+  contact, follow) and a copyright line. Every column is four rows on the same
+  rhythm, so the columns line up. Titles and links come from _data/footer.yml;
+  the address, name, office, email, and phone come from _data/contact.yml.
+{%- endcomment -%}
+{% assign f = site.data.footer %}
+{% assign c = site.data.contact %}
+{% assign d = c.director %}
+<footer class="nail-footer mt-5" role="contentinfo">
+  <div class="container nail-footer-grid">
+    <section class="nail-footer-col" aria-labelledby="nail-footer-lab">
+      <p class="nail-footer-title" id="nail-footer-lab">{{ f.lab.title }}</p>
+      <address class="nail-footer-address">
+        <i class="{{ f.lab.icon }}" aria-hidden="true"></i>
+        <span>{% include nail_address.liquid room=c.lab_room %}</span>
+      </address>
+    </section>
+
+    <section class="nail-footer-col" aria-labelledby="nail-footer-contact">
+      <p class="nail-footer-title" id="nail-footer-contact">{{ f.contact.title }}</p>
+      <ul class="nail-footer-rows">
+        <li>
+          <span class="nail-footer-row"><i class="fa-solid fa-user" aria-hidden="true"></i>{{ d.name }}</span>
+        </li>
+        <li>
+          <span class="nail-footer-row"><i class="fa-solid fa-building" aria-hidden="true"></i>{{ c.building }}, {{ d.office_room }}</span>
+        </li>
+        <li>
+          <a class="nail-footer-row" href="mailto:{{ d.email }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i>{{ d.email }}</a>
+        </li>
+        {% if d.phone %}
+          <li>
+            <a class="nail-footer-row" href="tel:{{ d.phone_link }}"><i class="fa-solid fa-phone" aria-hidden="true"></i>{{ d.phone }}</a>
+          </li>
+        {% endif %}
+      </ul>
+    </section>
+
+    <nav class="nail-footer-col" aria-labelledby="nail-footer-follow">
+      <p class="nail-footer-title" id="nail-footer-follow">{{ f.follow.title }}</p>
+      <ul class="nail-footer-rows">
+        {% for item in f.follow.items %}
+          <li>
+            <a class="nail-footer-row" href="{{ item.url }}"><i class="{{ item.icon }}" aria-hidden="true"></i>{{ item.label }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container">
+    <p class="nail-footer-bottom">
+      &copy; {{ site.time | date: '%Y' }}
+      {{ f.copyright }} Built with <a href="https://github.com/alshedivat/al-folio">al-folio</a>.
+    </p>
+  </div>
+</footer>
