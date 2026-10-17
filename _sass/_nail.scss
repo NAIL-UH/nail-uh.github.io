@@ -2647,16 +2647,25 @@ a.nail-area-more {
   color: var(--global-text-color);
 }
 
-// Every footer line sits on the same 2.25rem row, so the address lines, the
-// contact rows, and the follow links line up across the three columns.
-.nail-footer-address,
-.nail-footer-row {
+// Every footer line is a row of the same height (2.25rem), so the address
+// lines, the contact rows, and the follow links line up across the columns.
+// A line that has to wrap stays compact, with its icon on the first line.
+.nail-footer-rows {
   --nail-row: 2.25rem;
-  display: flex;
-  gap: 0.7rem;
   margin: 0;
+  padding: 0;
   font-style: normal;
-  line-height: var(--nail-row);
+  list-style: none;
+}
+
+.nail-footer-row {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  min-height: var(--nail-row);
+  padding: calc((var(--nail-row) - 1.5em) / 2) 0;
+  line-height: 1.5;
   color: var(--global-text-color);
 
   i {
@@ -2665,25 +2674,18 @@ a.nail-area-more {
     align-items: center;
     justify-content: center;
     width: 1.15rem;
-    height: var(--nail-row);
+    height: 1.5em;
     color: var(--global-theme-color);
   }
 
   span {
-    color: var(--global-text-color);
+    color: inherit;
   }
 }
 
-.nail-footer-rows {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.nail-footer-row {
-  position: relative;
-  align-items: center;
-  min-height: var(--nail-row);
+// Address lines after the first line up with the text, not the icon.
+.nail-footer-indent {
+  padding-left: calc(1.15rem + 0.7rem);
 }
 
 // Links are 36px tall to keep the rows even; the ::after extends each tap
@@ -2716,7 +2718,18 @@ a.nail-footer-row::after {
   }
 }
 
-@media (max-width: 991.98px) {
+// Narrow laptop windows (and laptops with display scaling or zoom) still get
+// three columns: Follow takes its own width and the other two share the rest.
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .nail-footer-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    gap: 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+// Phones and portrait tablets: one column.
+@media (max-width: 767.98px) {
   .nail-footer-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;

@@ -1,0 +1,26 @@
+{%- comment -%}
+  StatCounter tracking code (invisible counter, from the StatCounter
+  installation guide). Added to every page by footer.liquid, in production
+  builds only. Project and security codes are set in _config.yml.
+{%- endcomment -%}
+{% if jekyll.environment == 'production' and site.statcounter.project %}
+  <!-- Statcounter code for NAIL-Lab https://nail-uh.github.io/ -->
+  <script type="text/javascript">
+    var sc_project = {{ site.statcounter.project }};
+    var sc_invisible = 1;
+    var sc_security = '{{ site.statcounter.security }}';
+    var sc_remove_link = 1;
+  </script>
+  <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+  <noscript>
+    <div class="statcounter">
+      <img
+        class="statcounter"
+        src="https://c.statcounter.com/{{ site.statcounter.project }}/0/{{ site.statcounter.security }}/1/"
+        alt="Web Analytics Made Easy - Statcounter"
+        referrerpolicy="no-referrer-when-downgrade"
+      >
+    </div>
+  </noscript>
+  <!-- End of Statcounter Code -->
+{% endif %}
