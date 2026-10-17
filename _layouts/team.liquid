@@ -1,0 +1,263 @@
+---
+layout: page
+---
+{%- comment -%}
+  Team page. Everything on it comes from _data/team.yml, so adding or moving a
+  person means editing only that file. Photos live in assets/img/team/.
+{%- endcomment -%}
+{% assign team = site.data.team %}
+{% assign img_dir = '/assets/img/team/' %}
+{% assign email = site.data.join.email %}
+<div class="nail-team">
+  <section class="nail-team-hero" aria-label="Lab photos">
+    <swiper-container
+      class="nail-team-carousel"
+      id="nail-team-carousel"
+      navigation="true"
+      pagination="true"
+      pagination-clickable="true"
+      keyboard="true"
+      loop="true"
+      speed="600"
+    >
+      {% for slide in team.slides %}
+        <swiper-slide>
+          <figure class="nail-team-slide">
+            <img
+              src="{{ slide.image | prepend: img_dir | relative_url }}"
+              alt="{{ slide.caption | escape }}"
+              width="1800"
+              height="900"
+              {% if forloop.first %}
+                fetchpriority="high"
+              {% else %}
+                loading="lazy"
+              {% endif %}
+            >
+            <figcaption aria-hidden="true">{{ slide.caption }}</figcaption>
+          </figure>
+        </swiper-slide>
+      {% endfor %}
+    </swiper-container>
+    <script>
+      // Rotate the photos unless the visitor prefers reduced motion.
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const el = document.getElementById('nail-team-carousel');
+        el.setAttribute('autoplay-delay', '6000');
+        el.setAttribute('autoplay-pause-on-mouse-enter', 'true');
+      }
+    </script>
+  </section>
+
+  <section class="nail-team-section" aria-labelledby="current-members">
+    <div class="nail-section-head">
+      <h2 id="current-members">Current members</h2>
+    </div>
+
+    <h3 class="nail-team-subhead">Principal investigator</h3>
+    <article class="nail-pi-card">
+      <a class="nail-pi-photo" href="{{ team.pi.website }}" tabindex="-1" aria-hidden="true">
+        <img src="{{ team.pi.photo | prepend: img_dir | relative_url }}" alt="" width="200" height="200">
+      </a>
+      <div class="nail-pi-body">
+        <h4 class="nail-member-name">
+          <a href="{{ team.pi.website }}">{{ team.pi.name }}</a>
+        </h4>
+        <p class="nail-member-meta">{{ team.pi.role }}</p>
+        <p class="nail-member-links">
+          <a href="{{ team.pi.website }}">
+            <i class="fa-solid fa-globe" aria-hidden="true"></i>
+            {{- team.pi.website | remove: 'https://' | remove: 'http://' | split: '/' | first -}}
+          </a>
+          {% if email %}
+            <a href="mailto:{{ email }}"> <i class="fa-solid fa-envelope" aria-hidden="true"></i>{{ email }} </a>
+          {% endif %}
+        </p>
+      </div>
+    </article>
+
+    <h3 class="nail-team-subhead">Ph.D. students</h3>
+    <ul class="nail-member-grid">
+      {% for m in team.phd %}
+        <li class="nail-member-card">
+          <div class="nail-member-head">
+            <img
+              class="nail-member-photo"
+              src="{{ m.photo | prepend: img_dir | relative_url }}"
+              alt="{{ m.name | escape }}"
+              width="120"
+              height="120"
+              loading="lazy"
+            >
+            <div>
+              <h4 class="nail-member-name">
+                {% if m.website -%}
+                  <a href="{{ m.website }}">{{ m.name }}</a>
+                {%- else -%}
+                  {{- m.name -}}
+                {%- endif %}
+              </h4>
+              <p class="nail-member-meta">Ph.D. student, {{ m.program }} &middot; joined {{ m.start }}</p>
+              {% if m.website %}
+                <p class="nail-member-links">
+                  <a href="{{ m.website }}">
+                    <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                    {{- m.website | remove: 'https://' | remove: 'http://' | split: '/' | first -}}
+                  </a>
+                </p>
+              {% endif %}
+            </div>
+          </div>
+          <p class="nail-member-research">{{ m.research }}</p>
+          <p class="nail-member-desc">{{ m.description }}</p>
+          {% if m.publications %}
+            <ul class="nail-member-pubs" aria-label="Publications by {{ m.name | escape }}">
+              {% for pub in m.publications %}
+                <li>
+                  <a href="{{ pub.url | relative_url }}">{{ pub.label }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+
+    {% if team.masters.size > 0 %}
+      <h3 class="nail-team-subhead">Master's students</h3>
+      <ul class="nail-member-grid">
+        {% for m in team.masters %}
+          <li class="nail-member-card">
+            <div class="nail-member-head">
+              <img
+                class="nail-member-photo"
+                src="{{ m.photo | prepend: img_dir | relative_url }}"
+                alt="{{ m.name | escape }}"
+                width="120"
+                height="120"
+                loading="lazy"
+              >
+              <div>
+                <h4 class="nail-member-name">
+                  {% if m.website -%}
+                    <a href="{{ m.website }}">{{ m.name }}</a>
+                  {%- else -%}
+                    {{- m.name -}}
+                  {%- endif %}
+                </h4>
+                <p class="nail-member-meta">Master's student, {{ m.program }} &middot; joined {{ m.start }}</p>
+              </div>
+            </div>
+            <p class="nail-member-research">{{ m.research }}</p>
+            <p class="nail-member-desc">{{ m.description }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <h3 class="nail-team-subhead">Undergraduate students</h3>
+    <ul class="nail-project-grid">
+      {% for p in team.undergrad_projects %}
+        <li class="nail-project-card">
+          <img src="{{ p.photo | prepend: img_dir | relative_url }}" alt="{{ p.alt | escape }}" width="800" height="450" loading="lazy">
+          <div class="nail-project-body">
+            <p class="nail-project-kind">Undergraduate team project</p>
+            <h4 class="nail-member-name">{{ p.name }}</h4>
+            <p class="nail-member-research">{{ p.focus }}</p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="nail-team-section" aria-labelledby="alumni">
+    <div class="nail-section-head">
+      <h2 id="alumni">Alumni</h2>
+    </div>
+
+    <h3 class="nail-team-subhead">Master's students</h3>
+    <ul class="nail-alumni-grid">
+      {% for m in team.alumni_masters %}
+        {% if m.photo %}
+          <li class="nail-alumni-card">
+            <img
+              class="nail-member-photo"
+              src="{{ m.photo | prepend: img_dir | relative_url }}"
+              alt="{{ m.name | escape }}"
+              width="96"
+              height="96"
+              loading="lazy"
+            >
+            <div>
+              <h4 class="nail-member-name">
+                {% if m.website -%}
+                  <a href="{{ m.website }}">{{ m.name }}</a>
+                {%- else -%}
+                  {{- m.name -}}
+                {%- endif %}
+              </h4>
+              <p class="nail-member-meta">
+                {{ m.year }} &middot; {{ m.degree }}
+                {%- if m.note %} &middot; {{ m.note }}{% endif %}
+              </p>
+              <p class="nail-alumni-now">
+                <span>Now:</span>
+                {% if m.now_url -%}
+                  <a href="{{ m.now_url }}">{{ m.now }}</a>
+                {%- else -%}
+                  {{- m.now -}}
+                {%- endif %}
+              </p>
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    <ul class="nail-alumni-list nail-alumni-list-single">
+      {% for m in team.alumni_masters %}
+        {% unless m.photo %}
+          <li>
+            <strong>{{ m.name }}</strong> ({{ m.year }}, {{ m.degree }}
+            {%- if m.note %}, {{ m.note }}{% endif %}, now at {{ m.now }})
+          </li>
+        {% endunless %}
+      {% endfor %}
+    </ul>
+
+    <h3 class="nail-team-subhead">Undergraduate students</h3>
+    <ul class="nail-alumni-list">
+      {% for m in team.alumni_undergrads %}
+        <li>
+          <strong>{{ m.name }}</strong> <span>({{ m.note }})</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="nail-team-section" aria-labelledby="join-us">
+    <div class="nail-section-head">
+      <h2 id="join-us">Join us</h2>
+    </div>
+    <p class="nail-team-text">{{ team.join }}</p>
+    <div class="nail-actions">
+      {% if email %}
+        <a class="nail-btn nail-btn-filled" href="mailto:{{ email }}">Email Dr. Hu</a>
+      {% endif %}
+      <a class="nail-btn nail-btn-outline" href="{{ '/join/' | relative_url }}">Openings and how to apply</a>
+    </div>
+  </section>
+
+  <section class="nail-team-section" aria-labelledby="acknowledgment">
+    <div class="nail-section-head">
+      <h2 id="acknowledgment">Acknowledgment</h2>
+    </div>
+    <p class="nail-team-text">{{ team.acknowledgment }}</p>
+    <ul class="nail-funder-logos" aria-label="Funding agencies">
+      {% for funder in team.funders %}
+        <li title="{{ funder.name | escape }}">
+          <img src="{{ funder.logo | prepend: '/assets/img/funders/' | relative_url }}" alt="{{ funder.name | escape }}" height="64">
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+</div>

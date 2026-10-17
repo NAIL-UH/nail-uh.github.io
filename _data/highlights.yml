@@ -1,0 +1,85 @@
+# Research highlights on the home page, in display order: three per row on
+# desktop, two on tablets, one on phones.
+#
+# media:       a file in assets/img/publication_preview/. An .mp4 plays muted on a
+#              loop; anything else is shown as an image.
+# poster:      first-frame image for a video (same folder).
+# play_url:    for an image, where its play button goes (e.g. a YouTube demo).
+# alt:         what the video or image shows, read by screen readers.
+# description: one or two short sentences: the problem it solves, then the
+#              measured gain in numbers.
+# links:       buttons under the description. Labels "Paper", "Project page",
+#              "Code" and "Demo video" get matching icons.
+
+- media: corl2026-cert-replan.mp4
+  poster: corl2026-cert-replan.jpg
+  alt: Top-down view of a robot replanning toward a low-risk region around a moving obstacle
+  badge: CoRL 2026
+  title: "CERT-Replan: risk-certified replanning for dynamic navigation"
+  description: "Replans when moving obstacles make the current plan too risky. Cuts collisions by 83.3% and safety-filter interventions by 32.4% versus a safety-filter-only baseline."
+  links:
+    - label: Paper
+      url: https://arxiv.org/abs/2610.09302
+    - label: Project page
+      url: https://nail-uh.github.io/corl2026.github.io/
+
+- media: irosLBS2026-onboard-perception.mp4
+  poster: irosLBS2026-onboard-perception.jpg
+  alt: ModalAI drone experiments with onboard perception only, first with and without the safety filter, then compared with perception-aware IBVS
+  badge: IROS-LBS 2026
+  title: 3D leader-follower flight with camera safety
+  description: "Keeps the leader in each follower drone's camera view using onboard perception only. Cuts formation-tracking error by 36.7–54.2% versus IBVS and holds visibility where an unfiltered controller loses the leader."
+  links:
+    - label: Paper
+      url: https://arxiv.org/pdf/2605.17533.pdf
+    - label: Project page
+      url: https://nail-uh.github.io/3d-leader-follower-cbf.github.io/
+
+- media: iros2026-3robot-formation.mp4
+  poster: iros2026-3robot-formation.jpg
+  alt: Simulated three-robot formation on a track, with a follower's camera view and safety margin
+  badge: IROS 2026
+  title: Formation-aware conformal perception
+  description: "Adapts perception uncertainty bounds to each robot's position in the camera view, keeping vision-based formations safe without excess caution. Reaches 95% success over 100 trials, versus 73% for the best fixed-bound baseline."
+  links:
+    - label: Paper
+      url: https://arxiv.org/abs/2603.08958
+    - label: Project page
+      url: https://nail-uh.github.io/iros2026.github.io/
+
+# PLACEHOLDER: this Neural-ESO card will be replaced with another paper.
+- media: neural_eso.png
+  play_url: https://www.youtube.com/watch?v=KVUX0SVO-dA
+  alt: Neural-ESO architecture diagram. Opens the demo video on YouTube.
+  badge: IEEE RA-L 2026
+  title: "Neural-ESO: provably robust learning-based control"
+  description: "Pairs a learned disturbance model with a classical observer, so drone control gains from learning without over-trusting it. Cuts landing error under ground effect to 0.37 cm, 80% below an observer alone."
+  links:
+    - label: Paper
+      url: https://arxiv.org/abs/2607.06535
+    - label: Demo video
+      url: https://www.youtube.com/watch?v=KVUX0SVO-dA
+
+- media: tc2026-elastic-max78000.mp4
+  poster: tc2026-elastic-max78000.jpg
+  alt: A MAX78000 microcontroller board detecting the digits 7 and 8 on its screen
+  badge: IEEE TC 2026
+  title: "ELASTIC: object detection on microcontrollers"
+  description: "Finds object detectors small enough for tiny microcontrollers. Versus Analog Devices' TinySSD, it uses up to 71.6% less energy, runs up to 2.4× faster, and adds up to 6.99 points of mAP."
+  links:
+    - label: Paper
+      url: https://arxiv.org/pdf/2503.21999.pdf
+    - label: Project page
+      url: https://nail-uh.github.io/elastic.github.io/
+
+- media: icra2025-rosbot-leader-follower.mp4
+  poster: icra2025-rosbot-leader-follower.jpg
+  alt: Two ROSbot robots in a leader-follower run in the lab, with the follower's camera view inset
+  badge: ICRA 2025
+  title: Perception-aware safe leader-follower control
+  description: "Treats each follower camera's limited field of view as a safety constraint, so robots keep their leader in sight. In simulation it holds formations where the baseline controller fails."
+  links:
+    - label: Paper
+      url: https://arxiv.org/abs/2409.11394
+    - label: Project page
+      url: https://nail-uh.github.io/icra25.github.io/

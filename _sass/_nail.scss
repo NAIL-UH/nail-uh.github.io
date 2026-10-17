@@ -1,0 +1,2250 @@
+/*******************************************************************************
+ * NAIL Lab styles
+ *
+ * Everything specific to the NAIL Lab site lives here, so the gem's own Sass
+ * partials stay untouched. Loaded last from assets/css/main.scss.
+ ******************************************************************************/
+
+/* Navbar ------------------------------------------------------------------- */
+
+// --nail-nav-h is the height of the fixed navbar at each width. progress-bar.js
+// measures the real height on load; this only prevents a jump before it runs.
+:root {
+  --nail-logo-h: 80px;
+  --nail-nav-font: 1.3rem;
+  --nail-nav-pad: 0.85rem;
+  --nail-nav-h: 107px;
+}
+
+@media (max-width: 1199.98px) {
+  :root {
+    --nail-logo-h: 72px;
+    --nail-nav-font: 1.2rem;
+    --nail-nav-pad: 0.6rem;
+    --nail-nav-h: 99px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  :root {
+    --nail-logo-h: 64px;
+    --nail-nav-font: 1.1rem;
+    --nail-nav-pad: 0.45rem;
+    --nail-nav-h: 91px;
+  }
+}
+
+// Below 768px the menu collapses behind the hamburger, so the links can stay large.
+@media (max-width: 767.98px) {
+  :root {
+    --nail-logo-h: 56px;
+    --nail-nav-font: 1.25rem;
+    --nail-nav-pad: 0.3rem;
+    --nail-nav-h: 83px;
+  }
+}
+
+// The gem collapses the menu only below 576px. Between 576px and 768px the
+// five links no longer fit beside the larger logo, so collapse there too,
+// mirroring the gem's own small-screen navbar rules.
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .navbar.navbar-expand-sm {
+    .navbar-toggler {
+      display: block;
+      margin-left: auto;
+    }
+
+    .navbar-collapse {
+      flex-basis: 100%;
+      width: 100%;
+      text-align: left;
+    }
+
+    .navbar-nav {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+}
+
+.navbar .navbar-brand.nail-brand {
+  display: flex;
+  align-items: center;
+  margin-right: 1.5rem;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+
+  img {
+    display: block;
+    width: auto;
+    height: var(--nail-logo-h);
+  }
+}
+
+// The logo is black on transparent; invert it so it reads on the dark navbar.
+// hue-rotate brings the red marks back to red after the inversion.
+html[data-theme="dark"] .navbar .navbar-brand.nail-brand img {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.navbar.navbar-light .navbar-nav .nav-item .nav-link {
+  font-size: var(--nail-nav-font);
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .navbar.navbar-light .navbar-nav .nav-item .nav-link {
+    padding-right: var(--nail-nav-pad);
+    padding-left: var(--nail-nav-pad);
+  }
+}
+
+body.fixed-top-nav {
+  padding-top: var(--nail-nav-h);
+}
+
+progress,
+.progress-container {
+  top: var(--nail-nav-h);
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+  scroll-margin-top: calc(var(--nail-nav-h) + 10px);
+}
+
+// Tailwind's navbar rules sit in the "components" cascade layer, and an
+// !important rule in a layer beats an unlayered one. So the rule that hides
+// the closed menu has to live in the same layer, with a more specific selector.
+@layer components {
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    .navbar.navbar-expand-sm .navbar-collapse:not(.show) {
+      display: none !important;
+    }
+  }
+}
+
+/* Shared pieces ------------------------------------------------------------ */
+
+.nail-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.6rem 1.6rem;
+  border: 1.5px solid var(--global-theme-color);
+  border-radius: 4px;
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.2;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.nail-btn-filled {
+  background-color: var(--global-theme-color);
+  color: var(--global-hover-text-color) !important;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    color: var(--global-theme-color) !important;
+  }
+}
+
+.nail-btn-outline {
+  background-color: transparent;
+  color: var(--global-theme-color) !important;
+
+  &:hover,
+  &:focus {
+    background-color: var(--global-theme-color);
+    color: var(--global-hover-text-color) !important;
+  }
+}
+
+.nail-badge {
+  display: inline-block;
+  padding: 0.3em 0.65em;
+  border-radius: 3px;
+  background-color: var(--global-theme-color);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+// Section heading with a theme-color rule, matching the publication year headings.
+.nail-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--global-theme-color);
+
+  h2 {
+    margin: 0 0 0.4rem;
+    font-size: 2.25rem;
+    font-weight: 500;
+    color: var(--global-text-color);
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    font-size: 1.05rem;
+  }
+}
+
+/* Home: intro -------------------------------------------------------------- */
+
+// Left-aligned and full content width, so its edges line up with the
+// research and news sections below.
+.nail-hero {
+  padding: 1.5rem 0 3.5rem;
+  text-align: left;
+}
+
+.nail-wordmark {
+  margin: 0 0 0.6rem;
+  font-size: 4.5rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--global-text-color);
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+.nail-fullname {
+  margin: 0 0 1.75rem;
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--global-text-color-light);
+
+  .nail-break {
+    display: none;
+  }
+}
+
+.nail-hero-text {
+  font-size: 1.12rem;
+  line-height: 1.75;
+
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
+.nail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+// Funder logos. Each sits on a white tile so dark logos (NVIDIA) and logos
+// with a white background (NSF) read the same in light and dark mode.
+.nail-funders {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  margin-top: 2.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--global-divider-color);
+}
+
+.nail-funders-label {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+}
+
+.nail-funder-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 84px;
+    padding: 0.6rem 1.1rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 8px;
+    background-color: #fff;
+  }
+
+  img {
+    display: block;
+    width: auto;
+    max-width: 165px;
+    height: 64px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .nail-funder-logos {
+    gap: 0.6rem;
+
+    li {
+      height: 68px;
+      padding: 0.5rem 0.75rem;
+    }
+
+    img {
+      max-width: 120px;
+      height: 50px;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .nail-hero {
+    padding-bottom: 3rem;
+  }
+
+  .nail-wordmark {
+    font-size: 3.25rem;
+  }
+
+  .nail-fullname {
+    font-size: 1.15rem;
+
+    .nail-sep {
+      display: none;
+    }
+
+    .nail-break {
+      display: inline;
+    }
+  }
+
+  .nail-hero-text {
+    font-size: 1.05rem;
+  }
+}
+
+/* Home: recent research ---------------------------------------------------- */
+
+.nail-research {
+  padding-bottom: 3rem;
+}
+
+// Six cards: three per row on desktop, two on tablets, one on narrow screens.
+.nail-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 991.98px) {
+  .nail-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767.98px) {
+  .nail-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.nail-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 8px;
+  background-color: var(--global-card-bg-color);
+}
+
+.nail-card-media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #000;
+
+  video,
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+a.nail-card-media img {
+  background-color: #fff;
+  transition: opacity 0.15s ease;
+}
+
+a.nail-card-media:hover img,
+a.nail-card-media:focus img {
+  opacity: 0.85;
+}
+
+.nail-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  padding-left: 5px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  font-size: 1.6rem;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.nail-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.1rem 1.25rem 1.25rem;
+
+  h3 {
+    margin: 0.7rem 0 0.6rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--global-text-color);
+  }
+
+  p {
+    margin: 0 0 1rem;
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+}
+
+// Links sit at the bottom of every card so they line up across a row.
+.nail-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.nail-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: var(--global-text-color) !important;
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
+
+  i {
+    color: var(--global-theme-color);
+  }
+
+  &:hover,
+  &:focus {
+    border-color: var(--global-theme-color);
+    color: var(--global-theme-color) !important;
+    text-decoration: none;
+  }
+}
+
+/* News timeline (home page and /news/) ---------------------------------- */
+
+// The script in lab_home.liquid sets max-height to fit exactly the first
+// items; this fallback applies until it runs.
+.nail-news-scroll {
+  max-height: 36rem;
+  overflow-y: auto;
+  padding: 1rem 1.25rem 0.25rem 1rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  scrollbar-color: var(--global-theme-color) transparent;
+
+  &:focus-visible {
+    outline: 2px solid var(--global-theme-color);
+    outline-offset: 2px;
+  }
+}
+
+// Each news type has a color: --nk fills the icon dot, --nk-text colors the
+// label. Paper uses the theme color.
+.nail-tl-item {
+  --nk: var(--global-theme-color);
+  --nk-text: var(--global-theme-color);
+}
+
+.nail-tl-item.nk-award {
+  --nk: #d99407;
+  --nk-text: #a15c00;
+}
+
+.nail-tl-item.nk-grant {
+  --nk: #0f9d7a;
+  --nk-text: #047857;
+}
+
+.nail-tl-item.nk-talk {
+  --nk: #7c4dff;
+  --nk-text: #6d28d9;
+}
+
+.nail-tl-item.nk-people {
+  --nk: #2563eb;
+  --nk-text: #1d4ed8;
+}
+
+.nail-tl-item.nk-media,
+.nail-tl-item.nk-update {
+  --nk: #64748b;
+  --nk-text: #475569;
+}
+
+html[data-theme="dark"] {
+  .nail-tl-item.nk-award {
+    --nk-text: #fbbf24;
+  }
+
+  .nail-tl-item.nk-grant {
+    --nk-text: #34d399;
+  }
+
+  .nail-tl-item.nk-talk {
+    --nk-text: #b39dff;
+  }
+
+  .nail-tl-item.nk-people {
+    --nk-text: #93c5fd;
+  }
+
+  .nail-tl-item.nk-media,
+  .nail-tl-item.nk-update {
+    --nk-text: #cbd5e1;
+  }
+}
+
+.nail-timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nail-tl-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 0 1rem;
+  padding-bottom: 1.35rem;
+
+  // The line from this item's dot down to the next item.
+  &::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    bottom: 2px;
+    left: 13px;
+    width: 2px;
+    border-radius: 1px;
+    background-color: color-mix(in srgb, var(--nk) 40%, transparent);
+  }
+
+  &:last-child::before,
+  &:has(+ .nail-tl-divider)::before {
+    display: none;
+  }
+}
+
+.nail-tl-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--nk);
+  color: #fff;
+  font-size: 0.75rem;
+}
+
+.nail-tl-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 28px;
+
+  time {
+    font-size: 0.88rem;
+    color: var(--global-text-color-light);
+  }
+}
+
+.nail-tl-kind {
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--nk) 15%, transparent);
+  color: var(--nk-text);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.nail-tl-text {
+  margin-top: 0.15rem;
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+.nail-pin {
+  font-size: 0.8rem;
+  color: var(--global-theme-color);
+  transform: rotate(30deg);
+}
+
+// Separates the pinned top block from the rest of the news on the home page.
+.nail-tl-divider {
+  padding: 0.25rem 0 1.25rem;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--global-text-color-light);
+
+    &::after {
+      content: "";
+      flex: 1;
+      border-top: 1px solid var(--global-divider-color);
+    }
+  }
+}
+
+.nail-news-hint {
+  margin: 0.6rem 0 0;
+  font-size: 0.9rem;
+  color: var(--global-text-color-light);
+}
+
+.nail-timeline-page {
+  margin-top: 1rem;
+}
+
+/* Publications ------------------------------------------------------------- */
+
+// Button accents from the lab's publication format: Graph purple, PDF UH red,
+// Abs blue. Lighter tints in dark mode keep them readable.
+:root {
+  --nail-graph-color: #9c27b0;
+  --nail-pdf-color: #c8102e;
+  --nail-abs-color: #0069d9;
+}
+
+html[data-theme="dark"] {
+  --nail-graph-color: #d48ee0;
+  --nail-pdf-color: #ff7b8c;
+  --nail-abs-color: #6cb2ff;
+}
+
+.nail-pub-note {
+  margin: 0 0 1.25rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.nail-year-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    min-height: 44px;
+    padding: 0 0.75rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--global-text-color);
+
+    &:hover,
+    &:focus {
+      border-color: var(--global-theme-color);
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+  }
+}
+
+.nail-year {
+  padding-top: 2.5rem;
+}
+
+// Year headings: dark, large, left-aligned, with a theme-color rule. Replaces
+// the gem's light-grey, right-aligned h2.bibliography look.
+.nail-publications h2.nail-year-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  margin: 0;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--global-theme-color);
+  font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--global-text-color);
+
+  .nail-year-count {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--global-text-color-light);
+  }
+}
+
+.nail-publications ol.bibliography li {
+  margin: 0;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+// One entry: preview on the left, details on the right.
+.nail-pub {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 1rem 1.75rem;
+  align-items: start;
+}
+
+.nail-pub-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+  figure,
+  picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+
+  // Fill the frame; a bib entry can set `preview_position` (e.g. top) to keep
+  // the important part of a tall figure in view. Clicking opens the whole figure.
+  img,
+  video {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--nail-preview-pos, center);
+  }
+
+  &.nail-pub-media-video {
+    background-color: #000;
+
+    video {
+      object-fit: cover;
+    }
+  }
+}
+
+// The zoom script copies the thumbnail frame's 16:9 box; show the whole
+// figure at its own proportions inside it instead of stretching it.
+img.medium-zoom-image--opened {
+  object-fit: contain;
+}
+
+.nail-pub-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: 1;
+  margin: 0;
+  padding: 0.3em 0.6em;
+  border-radius: 3px;
+  background-color: var(--global-theme-color);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+
+  a {
+    color: #fff;
+  }
+}
+
+.nail-pub-badge-only .nail-pub-badge {
+  position: static;
+  display: inline-block;
+}
+
+.nail-pub-body {
+  min-width: 0;
+
+  .title {
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .author {
+    margin-top: 0.15rem;
+    line-height: 1.5;
+  }
+
+  .periodical {
+    margin-top: 0.1rem;
+    line-height: 1.5;
+  }
+}
+
+// Lab members in bold everywhere authors are listed.
+.author strong.nail-member {
+  font-weight: 500;
+}
+
+.nail-publications ol.bibliography li .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.7rem;
+
+  // 34px tall to look like the lab's buttons; the ::after extends the tap area to 44px.
+  a.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 34px;
+    margin: 0;
+    padding: 0.25rem 0.95rem;
+    border: 1px solid var(--global-text-color);
+    border-radius: 3px;
+    background-color: transparent;
+    box-shadow: none;
+    color: var(--global-text-color);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    span[aria-hidden="true"] {
+      font-size: 0.9rem;
+      line-height: 1;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: -5px 0;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: var(--global-theme-color);
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+  }
+
+  a.btn.nail-graph-btn {
+    border-color: var(--nail-graph-color);
+    color: var(--nail-graph-color);
+  }
+
+  a.btn.nail-pdf-btn {
+    border-color: var(--nail-pdf-color);
+    color: var(--nail-pdf-color);
+  }
+
+  a.btn.abstract {
+    border-color: var(--nail-abs-color);
+    color: var(--nail-abs-color);
+  }
+}
+
+// Graph panel, opened by the Graph button.
+.nail-publications ol.bibliography li div.nail-graph.hidden {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-align: center;
+
+  &.open {
+    margin-top: 0.75rem;
+    border-color: var(--nail-graph-color);
+  }
+
+  .nail-graph-inner {
+    padding: 1rem;
+    background-color: #fff;
+  }
+
+  img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .nail-pub {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nail-pub-side {
+    max-width: 420px;
+  }
+
+  .nail-publications h2.nail-year-heading {
+    font-size: 1.9rem;
+  }
+}
+
+// Marks where the list switches to selected papers only.
+.nail-selected-note {
+  margin: 3rem 0 0;
+  padding: 0.9rem 1.1rem;
+  border-left: 3px solid var(--global-theme-color);
+  border-radius: 4px;
+  background-color: color-mix(in srgb, var(--global-theme-color) 6%, var(--global-bg-color));
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Research overview and research direction pages ------------------------- */
+
+.nail-research-intro {
+  max-width: 54rem;
+  margin: 0 0 1.75rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+// Overview: one card per research direction, two per row.
+.nail-area-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 767.98px) {
+  .nail-area-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.nail-area-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 10px;
+  background-color: var(--global-card-bg-color);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover,
+  &:focus-within {
+    border-color: var(--global-theme-color);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.nail-area-card-media {
+  display: block;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background-color: #1a1432;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+}
+
+.nail-area-card:hover .nail-area-card-media img {
+  transform: scale(1.03);
+}
+
+.nail-area-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.25rem 1.4rem 1rem;
+
+  h2 {
+    margin: 0.35rem 0 0.6rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.3;
+
+    a {
+      color: var(--global-text-color);
+
+      &:hover,
+      &:focus {
+        color: var(--global-theme-color);
+        text-decoration: none;
+      }
+    }
+  }
+
+  p {
+    margin: 0 0 0.9rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+.nail-area-num {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--global-theme-color);
+}
+
+.nail-area-funding {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--global-text-color-light);
+  }
+}
+
+.nail-area-funding-logo {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 26px;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 4px;
+  background-color: #fff;
+
+  img {
+    max-width: 38px;
+    max-height: 20px;
+    object-fit: contain;
+  }
+}
+
+a.nail-area-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  margin-top: auto;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.nail-area-more-count {
+  font-weight: 400;
+  color: var(--global-text-color-light);
+}
+
+// Direction page.
+.nail-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: var(--global-text-color-light);
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+// Title across the top; below it the description and the direction's picture
+// side by side. The picture fills the height of the description column so the
+// two line up top and bottom.
+.nail-area-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  column-gap: 2.5rem;
+  align-items: stretch;
+  padding-bottom: 1rem;
+
+  .nail-area-title {
+    grid-column: 1 / -1;
+  }
+}
+
+.nail-area-hero-text {
+  align-self: start;
+}
+
+.nail-area-hero-media {
+  position: relative;
+  min-height: 260px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #0b0a1f;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// The gem styles h1 inside .publications as a centered, theme-colored title;
+// a direction page wants a plain, left-aligned one.
+.publications.nail-area h1.nail-area-title {
+  margin: 0 0 1rem;
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: left;
+  color: var(--global-text-color);
+}
+
+.nail-area-lead {
+  margin: 0 0 1.1rem;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.nail-area-themes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    margin-bottom: 0.45rem;
+    padding-left: 1.5rem;
+    line-height: 1.55;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0.55em;
+      left: 0.2rem;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 50%;
+      background-color: var(--global-theme-color);
+    }
+  }
+}
+
+.nail-area-section {
+  padding-top: 2.75rem;
+}
+
+// Papers are grouped by year only to sort them newest first.
+.nail-area h2.bibliography {
+  display: none;
+}
+
+.nail-area-others {
+  padding-top: 3.5rem;
+
+  h2 {
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    min-height: 44px;
+    color: var(--global-text-color);
+    font-weight: 500;
+    line-height: 1.35;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 2;
+      border: 1px solid var(--global-divider-color);
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    &:hover,
+    &:focus {
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+  }
+}
+
+@media (max-width: 991.98px) {
+  .nail-area-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .publications.nail-area h1.nail-area-title {
+    margin-bottom: 0;
+  }
+
+  .nail-area-hero-media {
+    max-width: 640px;
+    min-height: 0;
+
+    img {
+      position: static;
+      height: auto;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .publications.nail-area h1.nail-area-title {
+    font-size: 1.9rem;
+  }
+
+  .nail-area-others ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+// Funded projects on a direction page: one plain row per project with the
+// agency logo and name, project title, period, and role.
+.nail-funding-list {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nail-funding-row {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 15rem) minmax(0, 1fr) 7.5rem 5rem;
+  gap: 0.5rem 1.25rem;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+// White tile so the logos read the same in light and dark mode.
+.nail-funding-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 44px;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  background-color: #fff;
+
+  img {
+    display: block;
+    max-width: 52px;
+    max-height: 32px;
+    object-fit: contain;
+  }
+}
+
+.nail-funding-agency {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--global-text-color-light);
+}
+
+.nail-funding-title {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--global-text-color);
+}
+
+.nail-funding-period {
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--global-text-color-light);
+}
+
+.nail-funding-role {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--global-theme-color);
+}
+
+@media (max-width: 767.98px) {
+  .nail-funding-row {
+    grid-template-columns: 64px minmax(0, 1fr) auto;
+    grid-template-areas:
+      "logo agency agency"
+      "logo title title"
+      "logo period role";
+    align-items: start;
+  }
+
+  .nail-funding-logo {
+    grid-area: logo;
+  }
+
+  .nail-funding-agency {
+    grid-area: agency;
+  }
+
+  .nail-funding-title {
+    grid-area: title;
+  }
+
+  .nail-funding-period {
+    grid-area: period;
+  }
+
+  .nail-funding-role {
+    grid-area: role;
+  }
+}
+
+/* Team page ---------------------------------------------------------------- */
+
+// Lab photos across the full content width.
+.nail-team-hero {
+  padding-bottom: 0.5rem;
+}
+
+.nail-team-carousel {
+  --swiper-theme-color: #fff;
+  --swiper-navigation-color: #fff;
+  --swiper-navigation-size: 18px;
+  --swiper-pagination-color: #fff;
+  --swiper-pagination-bullet-inactive-color: #fff;
+  --swiper-pagination-bullet-inactive-opacity: 0.5;
+  --swiper-pagination-bullet-size: 9px;
+  --swiper-pagination-bottom: 14px;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #0b0a1f;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  &::part(button-prev),
+  &::part(button-next) {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: rgba(9, 8, 28, 0.45);
+  }
+
+  // Bullets on the right so they never sit on the caption.
+  &::part(pagination) {
+    left: auto;
+    right: 16px;
+    width: auto;
+  }
+}
+
+.nail-team-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 2.5rem 6.5rem 1rem 1.1rem;
+    background: linear-gradient(to top, rgba(9, 8, 28, 0.78), rgba(9, 8, 28, 0));
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+}
+
+.nail-team-section {
+  padding-top: 3.5rem;
+}
+
+.nail-team-subhead {
+  margin: 2rem 0 1rem;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--global-text-color);
+
+  .nail-section-head + & {
+    margin-top: 0;
+  }
+}
+
+.nail-member-name {
+  margin: 0 0 0.2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.35;
+
+  a {
+    color: var(--global-text-color);
+
+    &:hover,
+    &:focus {
+      color: var(--global-theme-color);
+    }
+  }
+}
+
+.nail-member-meta {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--global-text-color-light);
+}
+
+.nail-member-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.1rem;
+  margin: 0.15rem 0 0;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+  }
+}
+
+.nail-member-photo {
+  flex: none;
+  width: 120px;
+  height: 120px;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+// Principal investigator: a wide card with a large photo.
+.nail-pi-card {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  max-width: 40rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 12px;
+  background-color: var(--global-card-bg-color);
+
+  .nail-member-name {
+    font-size: 1.5rem;
+  }
+}
+
+.nail-pi-photo img {
+  display: block;
+  width: 150px;
+  height: 150px;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+// Ph.D. (and master's) students: two cards per row.
+.nail-member-grid,
+.nail-project-grid,
+.nail-alumni-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nail-member-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 12px;
+  background-color: var(--global-card-bg-color);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover,
+  &:focus-within {
+    border-color: var(--global-theme-color);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.nail-member-head {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-bottom: 0.9rem;
+}
+
+.nail-member-research {
+  margin: 0 0 0.35rem;
+  font-weight: 500;
+  color: var(--global-theme-color);
+}
+
+.nail-member-desc {
+  margin: 0;
+  line-height: 1.6;
+}
+
+// Publication tags: small pills that link to each paper's page or video.
+.nail-member-pubs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: auto 0 0;
+  padding: 0.9rem 0 0;
+  list-style: none;
+
+  a {
+    position: relative;
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--global-theme-color);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--global-theme-color);
+    text-decoration: none;
+
+    // Extends the tap area to 44px without making the pill look bigger.
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 50% -2px auto;
+      height: 44px;
+      transform: translateY(-50%);
+    }
+
+    &:hover,
+    &:focus {
+      background-color: var(--global-theme-color);
+      color: #fff;
+    }
+  }
+}
+
+// Undergraduate team projects: photo beside the text.
+.nail-project-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 12px;
+  background-color: var(--global-card-bg-color);
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 170px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+}
+
+.nail-project-body {
+  padding: 1rem 1.25rem;
+
+  .nail-member-research {
+    margin: 0;
+  }
+}
+
+.nail-project-kind {
+  margin: 0 0 0.2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+}
+
+// Alumni with a photo: compact cards. Others: a plain list.
+.nail-alumni-card {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 12px;
+  background-color: var(--global-card-bg-color);
+
+  .nail-member-photo {
+    width: 96px;
+    height: 96px;
+  }
+}
+
+.nail-alumni-now {
+  margin: 0.3rem 0 0;
+
+  span {
+    font-weight: 500;
+  }
+}
+
+.nail-alumni-list {
+  columns: 2;
+  column-gap: 2.5rem;
+  margin: 0;
+  padding: 0 0 0 1.1rem;
+
+  li {
+    margin-bottom: 0.45rem;
+    line-height: 1.55;
+    break-inside: avoid;
+  }
+
+  span {
+    color: var(--global-text-color-light);
+  }
+}
+
+.nail-alumni-list-single {
+  columns: 1;
+  margin-top: 1rem;
+}
+
+.nail-team-text {
+  max-width: 54rem;
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 767.98px) {
+  .nail-member-grid,
+  .nail-project-grid,
+  .nail-alumni-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nail-alumni-list {
+    columns: 1;
+  }
+
+  .nail-pi-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nail-member-card .nail-member-photo {
+    width: 88px;
+    height: 88px;
+  }
+
+  .nail-team-carousel {
+    aspect-ratio: 3 / 2;
+  }
+
+  .nail-team-slide figcaption {
+    padding-right: 5.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Home: research direction tiles ------------------------------------------- */
+
+// Four equal tiles in one row on desktop, two per row below that.
+.nail-dir-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.75rem 0 1.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.nail-dir-tile a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 10px;
+  background-color: var(--global-card-bg-color);
+  color: var(--global-text-color);
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover,
+  &:focus {
+    border-color: var(--global-theme-color);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    text-decoration: none;
+
+    .nail-dir-title {
+      color: var(--global-theme-color);
+    }
+
+    img {
+      transform: scale(1.04);
+    }
+  }
+}
+
+.nail-dir-media {
+  display: block;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background-color: #0b0a1f;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+}
+
+.nail-dir-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.8rem 1rem 0.95rem;
+}
+
+.nail-dir-num {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-theme-color);
+}
+
+.nail-dir-title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+@media (max-width: 991.98px) {
+  .nail-dir-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 479.98px) {
+  .nail-dir-grid {
+    gap: 0.75rem;
+  }
+
+  .nail-dir-body {
+    padding: 0.65rem 0.75rem 0.8rem;
+  }
+
+  .nail-dir-title {
+    font-size: 0.95rem;
+  }
+}
+
+/* Facilities and Outreach pages -------------------------------------------- */
+
+.nail-page-intro {
+  max-width: 56rem;
+  margin: 0 0 2rem;
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+.nail-subpage-section {
+  padding-top: 3.5rem;
+}
+
+.nail-subpage .nail-section-head {
+  margin-bottom: 1rem;
+}
+
+.nail-section-intro {
+  max-width: 56rem;
+  margin: 0 0 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+// Key numbers in a row of equal tiles.
+.nail-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0 0 3rem;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--global-divider-color);
+    border-top: 3px solid var(--global-theme-color);
+    border-radius: 10px;
+    background-color: var(--global-card-bg-color);
+  }
+}
+
+.nail-stat-value {
+  font-size: 1.9rem;
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--global-text-color);
+}
+
+.nail-stat-label {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--global-text-color-light);
+}
+
+// A large photo beside its description.
+.nail-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nail-feature-media {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.nail-feature-body {
+  h2,
+  h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.9rem;
+    font-weight: 500;
+    color: var(--global-text-color);
+  }
+
+  > p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+}
+
+.nail-spec-list {
+  margin: 1.25rem 0 0;
+
+  div {
+    display: grid;
+    grid-template-columns: 10rem minmax(0, 1fr);
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--global-divider-color);
+  }
+
+  div:last-child {
+    border-bottom: 1px solid var(--global-divider-color);
+  }
+
+  dt {
+    font-weight: 500;
+  }
+
+  dd {
+    margin: 0;
+    color: var(--global-text-color-light);
+  }
+}
+
+// Equipment: three or four cards per row (set per group so rows fill), each
+// with a 4:3 photo.
+.nail-equip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.1rem;
+
+  &.nail-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nail-equip-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 10px;
+  background-color: var(--global-card-bg-color);
+}
+
+.nail-equip-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background-color: #fff;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.nail-equip-count {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background-color: var(--global-theme-color);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.nail-equip-body {
+  padding: 0.85rem 1rem 1rem;
+
+  h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.02rem;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--global-text-color);
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--global-text-color-light);
+  }
+}
+
+// Embedded videos: three per row, 16:9.
+.nail-video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nail-video-card {
+  h3 {
+    margin: 0.8rem 0 0.3rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--global-text-color);
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--global-text-color-light);
+  }
+}
+
+.nail-video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #000;
+
+  iframe,
+  .nail-yt {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+// Video thumbnail with a play button; clicking swaps in the player.
+.nail-yt {
+  display: block;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img,
+  &:focus img {
+    transform: scale(1.03);
+  }
+
+  &:hover .nail-yt-play,
+  &:focus .nail-yt-play {
+    background-color: var(--global-theme-color);
+  }
+}
+
+.nail-yt-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgba(9, 8, 28, 0.72);
+  transform: translate(-50%, -50%);
+  transition: background-color 0.15s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 54%;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 19px solid #fff;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// Outreach activities: two cards per row, the whole 16:9 photo above the text
+// (many photos are two-photo collages, so they are never cropped).
+.nail-activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nail-activity-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 12px;
+  background-color: var(--global-card-bg-color);
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+}
+
+.nail-activity-body {
+  padding: 1rem 1.25rem 1.2rem;
+
+  h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--global-text-color);
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+.nail-activity-period {
+  margin: 0 0 0.3rem !important;
+  font-size: 0.78rem !important;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-theme-color);
+}
+
+.nail-feature-video {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  margin-top: 2rem;
+  padding: 1.25rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 12px;
+  background-color: var(--global-card-bg-color);
+
+  .nail-feature-body h3 {
+    font-size: 1.45rem;
+  }
+}
+
+.nail-subpage-contact p {
+  max-width: 56rem;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 991.98px) {
+  .nail-stat-grid,
+  .nail-equip-grid.nail-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nail-feature,
+  .nail-feature-video {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .nail-feature-media {
+    max-width: 520px;
+  }
+
+  .nail-video-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575.98px) {
+  .nail-equip-grid.nail-cols-3,
+  .nail-equip-grid.nail-cols-4,
+  .nail-video-grid,
+  .nail-activity-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nail-stat-value {
+    font-size: 1.5rem;
+  }
+
+  .nail-spec-list div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.15rem;
+  }
+}

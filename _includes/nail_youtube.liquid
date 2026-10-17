@@ -1,0 +1,35 @@
+{%- comment -%}
+  A YouTube video shown as its thumbnail with a play button. Clicking loads the
+  player in place (privacy-enhanced mode); without JavaScript the link opens the
+  video on YouTube. Parameters: id (YouTube video id), title.
+  The thumbnail is assets/img/videos/<id>.jpg (960x540).
+{%- endcomment -%}
+<div class="nail-video-frame">
+  <a
+    class="nail-yt"
+    href="https://www.youtube.com/watch?v={{ include.id }}"
+    data-yt="{{ include.id }}"
+    data-title="{{ include.title | escape }}"
+    aria-label="Play video: {{ include.title | escape }}"
+  >
+    <img src="{{ include.id | prepend: '/assets/img/videos/' | append: '.jpg' | relative_url }}" alt="" width="960" height="540" loading="lazy">
+    <span class="nail-yt-play" aria-hidden="true"></span>
+  </a>
+</div>
+<script>
+  if (!window.nailYt) {
+    window.nailYt = true;
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a.nail-yt');
+      if (!a) return;
+      e.preventDefault();
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + a.dataset.yt + '?autoplay=1&rel=0';
+      f.title = a.dataset.title;
+      f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+      f.allowFullscreen = true;
+      a.replaceWith(f);
+      f.focus();
+    });
+  }
+</script>

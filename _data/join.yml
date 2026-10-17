@@ -1,0 +1,5 @@
+# "Join the lab" text, shown on the home page. Each paragraph is Markdown.
+email: bhu12@uh.edu
+paragraphs:
+  - "**Graduate students.** We have multiple openings for students interested in control, optimization, machine learning, robotics, and autonomous vehicles. Please send your CV and transcript to Dr. Hu by email."
+  - "**Undergraduates.** Join our AI-powered drone or race car project teams and get hands-on experience with real autonomous systems."

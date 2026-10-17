@@ -1,0 +1,95 @@
+---
+layout: page
+---
+{%- comment -%}
+  Facilities page. Everything on it comes from _data/facilities.yml; equipment
+  photos live in assets/img/facilities/.
+{%- endcomment -%}
+{% assign fac = site.data.facilities %}
+{% assign img_dir = '/assets/img/facilities/' %}
+{% assign email = site.data.join.email %}
+<div class="nail-subpage">
+  <p class="nail-page-intro">{{ fac.intro }}</p>
+
+  <ul class="nail-stat-grid" aria-label="The lab at a glance">
+    {% for s in fac.stats %}
+      <li>
+        <span class="nail-stat-value">{{ s.value }}</span>
+        <span class="nail-stat-label">{{ s.label }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <section class="nail-feature" aria-labelledby="arena">
+    <figure class="nail-feature-media">
+      <img src="{{ fac.arena.image | prepend: img_dir | relative_url }}" alt="{{ fac.arena.alt | escape }}" width="960" height="1200" loading="lazy">
+    </figure>
+    <div class="nail-feature-body">
+      <h2 id="arena">{{ fac.arena.title }}</h2>
+      <p>{{ fac.arena.text }}</p>
+      <dl class="nail-spec-list">
+        {% for spec in fac.arena.specs %}
+          <div>
+            <dt>{{ spec.label }}</dt>
+            <dd>{{ spec.value }}</dd>
+          </div>
+        {% endfor %}
+      </dl>
+    </div>
+  </section>
+
+  {% for group in fac.groups %}
+    <section class="nail-subpage-section" aria-labelledby="{{ group.id }}">
+      <div class="nail-section-head">
+        <h2 id="{{ group.id }}">{{ group.title }}</h2>
+      </div>
+      <p class="nail-section-intro">{{ group.intro }}</p>
+      <ul class="nail-equip-grid nail-cols-{{ group.columns | default: 4 }}">
+        {% for item in group.items %}
+          <li class="nail-equip-card">
+            <div class="nail-equip-media">
+              <img src="{{ item.image | prepend: img_dir | relative_url }}" alt="{{ item.name | escape }}" width="640" height="480" loading="lazy">
+              {% if item.count > 1 %}
+                <span class="nail-equip-count">
+                  {{- item.count }}
+                  {{ item.count_label | default: 'units' -}}
+                </span>
+              {% endif %}
+            </div>
+            <div class="nail-equip-body">
+              <h3>{{ item.name }}</h3>
+              <p>{{ item.text }}</p>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endfor %}
+
+  {% if fac.videos %}
+    <section class="nail-subpage-section" aria-labelledby="in-action">
+      <div class="nail-section-head">
+        <h2 id="in-action">Equipment in action</h2>
+      </div>
+      <ul class="nail-video-grid">
+        {% for v in fac.videos %}
+          <li class="nail-video-card">
+            {% include nail_youtube.liquid id=v.id title=v.title %}
+            <h3>{{ v.title }}</h3>
+            <p>{{ v.text }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  <section class="nail-subpage-section nail-subpage-contact" aria-label="Contact">
+    <p>{{ fac.contact }}</p>
+    <div class="nail-actions">
+      {% if email %}
+        <a class="nail-btn nail-btn-filled" href="mailto:{{ email }}">Email Dr. Hu</a>
+      {% endif %}
+      <a class="nail-btn nail-btn-outline" href="{{ '/team/' | relative_url }}">Meet the team</a>
+    </div>
+  </section>
+</div>

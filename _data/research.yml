@@ -1,0 +1,111 @@
+# Research directions (in display order) and funded projects.
+#
+# Each area has its own page (`url`, a file in _pages/research/ with layout
+# research_area). Its representative publications are the bib entries whose
+# `research_area` field lists the area's id (in _bibliography/nail.bib). A paper
+# on the boundary of two areas lists both, e.g. {human-ai-multi-agent, safe-learning}.
+# `image` (in assets/img/research/) is shown on the area's card on the Research
+# overview and beside the description on the area page. `summary` is the card
+# text; `overview` and `themes` open the area page.
+# Each grant names the area it belongs to and appears on that area's page and
+# on its block on the Research overview.
+
+areas:
+  - id: safe-learning
+    title: Safe Learning & Trustworthy Autonomy
+    url: /research/safe-learning/
+    image: safe-learning.jpg
+    image_alt: "A legged robot and a wheeled robot move along a busy park path among pedestrians and cyclists, each person wrapped in a translucent safety zone, with drones overhead and a city skyline at sunset."
+    summary: >-
+      We develop learning-based control and planning frameworks that enable autonomous systems to operate safely and reliably in uncertain,
+      dynamic environments. Our research integrates reinforcement learning, safety-critical control, uncertainty quantification, and
+      risk-aware decision-making to provide trustworthy autonomy with formal safety guarantees.
+    themes:
+      - Risk-certified, event-triggered replanning for navigation among moving obstacles
+      - Control barrier function safety filters for mobile robots and multi-robot teams
+      - Learning-based disturbance estimation with provable robustness
+      - Stochastic safety guarantees for systems that rely on unreliable communication
+
+  - id: human-ai-multi-agent
+    title: Human–AI Collaboration & Multi-Agent Autonomy
+    url: /research/human-ai-multi-agent/
+    image: human-ai-multi-agent.jpg
+    image_alt: "An operator wearing a mixed-reality headset directs a wheeled robot, a legged robot, and a drone through a holographic map and task panels, while a construction worker coordinates with the team nearby."
+    summary: >-
+      We investigate intelligent collaboration between humans and autonomous agents, as well as coordination among interconnected robotic
+      systems. Our research focuses on human-autonomy teaming, trust-aware decision-making, adaptive task allocation, cooperative perception,
+      and distributed control to enable effective and resilient multi-agent operations.
+    themes:
+      - Human trust in automation and how automation communicates its reliability
+      - Adaptive task allocation for human-machine teams, from manufacturing to m:N operations of uncrewed aircraft
+      - Perception-aware distributed formation control for teams of drones and ground robots
+      - Resilient vehicle platoons and networked control over unreliable wireless links
+
+  - id: space-autonomy
+    title: Space & Planetary Autonomy
+    url: /research/space-autonomy/
+    image: space-autonomy.jpg
+    image_alt: "A planetary rover and a legged robot on rocky lunar ground; above them, spacecraft follow planned trajectories between the Earth and the Moon, beside a trajectory chart and a keep-out zone around the Moon."
+    summary: >-
+      We advance intelligent and reliable autonomy for spacecraft and planetary robotic systems operating in challenging and
+      resource-constrained environments. Our research combines physics-informed reinforcement learning, safety-critical guidance and control,
+      and efficient onboard planning to support autonomous space missions and planetary exploration.
+    themes:
+      - Physics-informed reinforcement learning for onboard spacecraft planning
+      - Safety-critical guidance and control under mission constraints
+      - Efficient onboard planning for resource-constrained spacecraft and planetary robots
+
+  - id: edge-ai
+    title: Efficient Edge AI & Intelligent Perception
+    url: /research/edge-ai/
+    image: edge-ai.jpg
+    image_alt: "A compact edge-AI computer on a rock runs a camera-based detection pipeline, drawn as feature maps that turn a street scene into labeled detections, with icons for energy, speed, and the chip; a drone and a ground robot work nearby."
+    summary: >-
+      We develop resource-efficient machine learning and perception algorithms that bring advanced AI capabilities to embedded and robotic
+      platforms. Our research emphasizes hardware-aware neural architecture search, energy-efficient computer vision, model optimization, and
+      real-time edge intelligence for autonomous systems with limited computing resources.
+    themes:
+      - Hardware-aware neural architecture search for object detection on microcontrollers
+      - Once-for-all training that trades accuracy and robustness at run time
+      - Efficient waste detection for multi-robot clean-up
+      - Embedded language-model guidance and energy-aware learning on mobile devices
+
+grants:
+  - id: nasa-ecf
+    status: current
+    sponsor: NASA
+    program: Early Career Faculty Award (ECF25)
+    logo: nasa.png
+    title: Safety-Enabled and Efficient Onboard Planning for Autonomous Spacecraft via Physics-Informed Reinforcement Learning
+    period: 2026–2029
+    role: PI
+    area: space-autonomy
+
+  - id: nvidia-agp
+    status: current
+    sponsor: NVIDIA
+    program: Academic Grant Program
+    logo: nvidia.png
+    title: Heterogeneous Multi-Robot Waste Detection with Conformal Runtime Monitoring
+    period: "2026"
+    role: PI
+    area: edge-ai
+
+  - id: nasa-mn
+    status: current
+    sponsor: NASA
+    logo: nasa.png
+    title: Adaptive human-autonomy responsibility allocation for scalable and safe m:N operational architectures
+    period: 2023–2027
+    role: Site PI
+    area: human-ai-multi-agent
+
+  - id: nsf-chs
+    status: completed
+    sponsor: NSF
+    program: "CHS: Small"
+    logo: nsf.png
+    title: AI-Human Collaboration in Autonomous Vehicles for Safety and Security
+    period: 2020–2025
+    role: Co-PI
+    area: human-ai-multi-agent

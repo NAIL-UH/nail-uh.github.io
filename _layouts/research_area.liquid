@@ -1,0 +1,95 @@
+---
+layout: default
+---
+{%- comment -%}
+  One research direction. The page sets `area` to an id from _data/research.yml.
+  Publications are the bib entries whose `research_area` lists that id (a paper
+  can belong to several areas). They are grouped by year so they come out newest
+  first; the year headings are hidden by CSS.
+{%- endcomment -%}
+{% assign area = site.data.research.areas | where: 'id', page.area | first %}
+{% assign area_grants = site.data.research.grants | where: 'area', area.id %}
+{% capture area_count %}{% bibliography_count -q @*[research_area~={{ area.id }}]* %}{% endcapture %}
+{% assign area_count = area_count | strip | plus: 0 %}
+<div class="publications nail-publications nail-area">
+  <nav class="nail-crumbs" aria-label="Breadcrumb">
+    <a href="{{ '/research/' | relative_url }}">Research</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ area.title }}</span>
+  </nav>
+
+  <header class="nail-area-hero">
+    <h1 class="nail-area-title">{{ area.title }}</h1>
+    <div class="nail-area-hero-text">
+      <p class="nail-area-lead">{{ area.summary }}</p>
+      <ul class="nail-area-themes">
+        {% for theme in area.themes %}
+          <li>{{ theme }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <figure class="nail-area-hero-media">
+      <img src="{{ area.image | prepend: '/assets/img/research/' | relative_url }}" alt="{{ area.image_alt | escape }}" loading="eager">
+    </figure>
+  </header>
+
+  <section class="nail-area-section" aria-labelledby="representative-publications">
+    <h2 id="representative-publications" class="nail-year-heading">Representative publications</h2>
+    {% if area_count > 0 %}
+      <p class="nail-pub-note">
+        Lab members are in bold. ★ PhD student, ♦ Master's student, † equal contribution. The full list is on the
+        <a href="{{ '/publications/' | relative_url }}">Publications</a> page.
+      </p>
+      {% bibliography -q @*[research_area~={{ area.id }}]* %}
+    {% else %}
+      <p class="nail-pub-note">
+        Publications in this direction will be listed here as they appear. All of our papers are on the
+        <a href="{{ '/publications/' | relative_url }}">Publications</a> page.
+      </p>
+    {% endif %}
+  </section>
+
+  {% if area_grants.size > 0 %}
+    <section class="nail-area-section" aria-labelledby="funded-projects">
+      <h2 id="funded-projects" class="nail-year-heading">Funded projects</h2>
+      <ul class="nail-funding-list">
+        {% for grant in area_grants %}
+          <li class="nail-funding-row">
+            <span class="nail-funding-logo"><img src="{{ grant.logo | prepend: '/assets/img/funders/' | relative_url }}" alt=""></span>
+            <span class="nail-funding-agency">
+              {{- grant.sponsor }}
+              {%- if grant.program %} {{ grant.program }}{% endif -%}
+            </span>
+            <span class="nail-funding-title">{{ grant.title }}</span>
+            <span class="nail-funding-period">{{ grant.period }}</span>
+            <span class="nail-funding-role">{{ grant.role }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  <nav class="nail-area-others" aria-labelledby="other-directions">
+    <h2 id="other-directions">Other research directions</h2>
+    <ul>
+      {% for other in site.data.research.areas %}
+        {% if other.id != area.id %}
+          <li>
+            <a href="{{ other.url | relative_url }}">
+              <img
+                src="{{ other.image | prepend: '/assets/img/research/' | relative_url }}"
+                alt=""
+                width="765"
+                height="510"
+                loading="lazy"
+              >
+              <span>{{ other.title }}</span>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
+</div>
+
+<script src="{{ '/assets/js/nail-publications.js' | relative_url }}" defer></script>

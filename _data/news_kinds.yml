@@ -1,0 +1,24 @@
+# News types: the `kind` in each _news/*.md front matter. Each type gets a label,
+# a Font Awesome icon, and a color (see the nk-* rules in _sass/_nail.scss).
+# A news item without a kind is shown as an update.
+paper:
+  label: Paper
+  icon: fa-solid fa-file-lines
+award:
+  label: Award
+  icon: fa-solid fa-trophy
+grant:
+  label: Grant
+  icon: fa-solid fa-hand-holding-dollar
+talk:
+  label: Talk
+  icon: fa-solid fa-microphone
+people:
+  label: People
+  icon: fa-solid fa-user-graduate
+media:
+  label: Media
+  icon: fa-solid fa-newspaper
+update:
+  label: Update
+  icon: fa-solid fa-flag

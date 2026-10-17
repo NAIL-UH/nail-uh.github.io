@@ -1,0 +1,70 @@
+# Outreach page (_pages/outreach.md, rendered by _layouts/outreach.liquid).
+# Photos live in assets/img/outreach/ as 1200x675 (16:9) images. Text is Markdown.
+
+intro: >-
+  The NAIL Lab is committed to advancing STEM education and engaging with the broader community. Our outreach aims to inspire the next
+  generation of engineers and researchers and to build public understanding of autonomous systems and AI.
+
+sections:
+  - id: education
+    title: Educational programs
+    intro: We take part in programs that bring robotics and AI to students and teachers at every level.
+    items:
+      - title: K-12 lab visits and robotics demonstrations
+        period: 2024–present
+        image: k12-demo.jpg
+        alt: Young students watching robots in the NAIL Lab testing arena.
+        text: Interactive demonstrations of autonomous drones, ground robots, and AI applications for K-12 students, to inspire them to pursue STEM careers.
+      - title: Summer renewable energy and AI robotics camps
+        period: 2025–present
+        image: summer-camp.jpg
+        alt: High school students working on laptops during a summer camp session.
+        text: Week-long camps for high school students, run with the [Houston Area Urban League](https://www.haul.org/), with hands-on robot programming, sensor integration, and autonomous navigation.
+      - title: Teacher professional development
+        period: 2024–present
+        image: teacher-workshop.jpg
+        alt: Educators presenting summer research projects in a classroom.
+        text: Sessions for K-12 educators on bringing robotics and AI into the classroom, through the [Research Experience for Preservice Teachers](https://coss.egr.uh.edu/re-pst/) summer program.
+      - title: Capstone research projects
+        period: 2024–present
+        image: senior-project.jpg
+        alt: Undergraduate capstone team members standing in the lab with their drones.
+        text: Mentoring undergraduates in capstone projects such as the AI-powered drone and race car teams, co-supervised with [Dr. Qin Lin](https://air.egr.uh.edu/).
+
+  - id: community
+    title: Community events and public engagement
+    intro: We bring our robots to campus and community events to share what autonomous systems and AI can do.
+    items:
+      - title: Cullen College new student events
+        period: 2024–present
+        image: aws.jpg
+        alt: New students gathered around the lab's quadruped robot during a demonstration.
+        text: Demonstrations of NAIL Lab research for newly admitted undergraduates, to encourage them to explore robotics and AI research.
+      - title: Undergraduate research symposium
+        period: 2024–present
+        image: undergrad-symposium.jpg
+        alt: Students presenting a robotics project to visitors at the research symposium.
+        text: Our undergraduate students present their work on autonomous systems, AI, and robotics to the university community at the annual symposium.
+      - title: Houston ISD high school research showcase
+        period: "2024"
+        image: hisd-sl.jpg
+        alt: Houston ISD high school students attending a research presentation.
+        text: We presented NAIL Lab research to 126 high school students from Houston ISD at the University of Houston Sugar Land campus.
+      - title: Fort Bend Chamber technology events
+        period: "2024"
+        image: fortbend-expo.jpg
+        alt: The NAIL Lab booth with drones and robots at the Fort Bend Chamber Technology Expo.
+        text: We showcased our research at Technology Day and the 5th Annual Fort Bend Chamber Technology Expo for industry professionals and community members.
+
+# A featured student project video (YouTube id).
+feature:
+  id: fM09gTBHnnM
+  label: Capstone project
+  title: UH students build an autonomous drone with real-time object detection
+  text: >-
+    Computer Engineering Technology undergraduates designed, assembled, and programmed this drone from scratch as their senior capstone
+    project with guidance from the NAIL Lab. It flies autonomously using OptiTrack motion capture and detects objects in real time on board.
+
+get_involved: >-
+  We welcome partnerships with schools, community organizations, and educational institutions. If you would like to host a robotics
+  demonstration, organize a workshop, or develop an educational partnership, we would love to hear from you.

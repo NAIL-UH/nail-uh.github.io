@@ -1,0 +1,57 @@
+---
+layout: page
+---
+{%- comment -%}
+  Outreach page. Everything on it comes from _data/outreach.yml; photos live in
+  assets/img/outreach/.
+{%- endcomment -%}
+{% assign out = site.data.outreach %}
+{% assign img_dir = '/assets/img/outreach/' %}
+{% assign email = site.data.join.email %}
+<div class="nail-subpage">
+  <p class="nail-page-intro">{{ out.intro }}</p>
+
+  {% for section in out.sections %}
+    <section class="nail-subpage-section" aria-labelledby="{{ section.id }}">
+      <div class="nail-section-head">
+        <h2 id="{{ section.id }}">{{ section.title }}</h2>
+      </div>
+      <p class="nail-section-intro">{{ section.intro }}</p>
+      <ul class="nail-activity-grid">
+        {% for item in section.items %}
+          <li class="nail-activity-card">
+            <img src="{{ item.image | prepend: img_dir | relative_url }}" alt="{{ item.alt | escape }}" width="1200" height="675" loading="lazy">
+            <div class="nail-activity-body">
+              <p class="nail-activity-period">{{ item.period }}</p>
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+
+      {% if forloop.first and out.feature %}
+        <article class="nail-feature nail-feature-video" aria-labelledby="feature-video">
+          {% include nail_youtube.liquid id=out.feature.id title=out.feature.title %}
+          <div class="nail-feature-body">
+            <p class="nail-activity-period">{{ out.feature.label }}</p>
+            <h3 id="feature-video">{{ out.feature.title }}</h3>
+            <p>{{ out.feature.text }}</p>
+          </div>
+        </article>
+      {% endif %}
+    </section>
+  {% endfor %}
+
+  <section class="nail-subpage-section" aria-labelledby="get-involved">
+    <div class="nail-section-head">
+      <h2 id="get-involved">Get involved</h2>
+    </div>
+    <p class="nail-section-intro">{{ out.get_involved }}</p>
+    {% if email %}
+      <div class="nail-actions">
+        <a class="nail-btn nail-btn-filled" href="mailto:{{ email }}">Contact us about outreach</a>
+      </div>
+    {% endif %}
+  </section>
+</div>

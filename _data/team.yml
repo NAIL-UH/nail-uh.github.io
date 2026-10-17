@@ -1,0 +1,180 @@
+# Team page (_pages/team.md, rendered by _layouts/team.liquid).
+# To add or move a person, edit this file only. Photos live in assets/img/team/
+# (square crops for people, 16:9 for slides and project photos).
+
+# Photo carousel at the top of the page (16:9 images).
+slides:
+  - image: slide-lunch-2026.jpg
+    caption: NAIL group lunch, celebrating Spring 2026 and Tony's graduation
+  - image: slide-group-2025.jpg
+    caption: NAIL Lab group, Fall 2025
+  - image: slide-group-2024.jpg
+    caption: NAIL Lab group, Spring 2024
+  - image: slide-facility.jpg
+    caption: Our lab facility
+
+pi:
+  name: Dr. Bin Hu
+  role: PI & NAIL Lab Director
+  photo: bin-hu.jpg
+  website: https://binhu85.github.io/
+
+phd:
+  - name: Richie Ryulie Suganda
+    program: ECE
+    start: Spring 2024
+    research: Learning-Based Control & Optimization
+    description: Developing safe learning algorithms for layered autonomous systems and integrating large language models for intelligent robotic control applications.
+    photo: richie-suganda.jpg
+    website: https://richieryu.github.io/
+    # Each paper links to its project website, or to the paper itself when there is none.
+    publications:
+      - label: CoRL 2026
+        url: https://nail-uh.github.io/corl2026.github.io/
+      - label: IROS 2026
+        url: https://nail-uh.github.io/iros2026.github.io/
+      - label: IROS-LBS 2026
+        url: https://nail-uh.github.io/3d-leader-follower-cbf.github.io/
+      - label: RA-L 2026
+        url: https://arxiv.org/abs/2607.06535
+      - label: AIAA 2026
+        url: https://arc.aiaa.org/doi/abs/10.2514/6.2026-2211
+      - label: ICRA 2025
+        url: https://nail-uh.github.io/icra25.github.io/
+      - label: ICRA-LBS 2025
+        url: /assets/pdf/LLM.pdf
+  - name: Benedictus Christo Geroda Cinun
+    program: ECE
+    start: Spring 2025
+    research: Machine Learning & Robotics
+    description: Investigating safe reinforcement learning algorithms for quadruped robot locomotion and dynamic environment navigation systems.
+    photo: benedictus-cinun.jpg
+    website: https://bentuschristo.github.io/
+    publications:
+      - label: ACAP 2026
+        url: https://onlinelibrary.wiley.com/doi/10.1002/adc2.70050
+  - name: Immanuel Raynaldo Santjoko
+    program: ECE
+    start: Fall 2025
+    research: Trustworthy Human-AI Collaboration
+    description: Building reliable and transparent AI systems for effective human-AI collaboration through trust mechanisms and explainable AI frameworks.
+    photo: immanuel-santjoko.jpg
+    website: https://research.noelsadventure.my.id/
+    publications:
+      - label: IROS-LBS 2026
+        url: https://nail-uh.github.io/3d-leader-follower-cbf.github.io/
+      - label: ACAP 2026
+        url: https://onlinelibrary.wiley.com/doi/10.1002/adc2.70050
+  - name: Vieri Akustia
+    program: ECE
+    start: Fall 2026
+    research: Efficient Embodied AI
+    description: Developing energy-efficient foundation models for embodied AI, enabling real-time perception and control on resource-constrained edge devices and robotic platforms.
+    photo: vieri-akustia.jpg
+
+# Master's students; the section is hidden while this list is empty.
+masters: []
+
+# Undergraduates work in team projects.
+undergrad_projects:
+  - name: AI-Powered Drone Project
+    focus: LLM-based drone navigation and control
+    photo: project-drone.jpg
+    alt: The team's quadrotor with a depth camera and an onboard computer, in front of the NAIL logo.
+  - name: AI-Powered Race Car Project
+    focus: Learning-based car racing
+    photo: project-race-car.jpg
+    alt: The team's race car with a lidar and an NVIDIA Jetson Orin Nano computer.
+
+alumni_masters:
+  - name: Tony Tran
+    year: 2026
+    degree: M.S. Engineering Data Science
+    now: Machine Learning Engineer at CFD Research Corporation
+    now_url: https://www.cfd-research.com
+    photo: tony-tran.jpg
+    website: https://tonyvt0.github.io/
+  - name: Pooyan Ghodrati
+    year: 2025
+    degree: M.S. Engineering Data Science
+    note: RA funded by NASA
+    now: Data Scientist at Toyo Financial Group
+    photo: pooyan-ghodrati.jpg
+  - name: Jahanvi Hitesh Dave
+    year: 2023
+    degree: M.S. Computer Science
+    note: RA funded by NSF at UH
+    now: Goldman Sachs
+
+alumni_undergrads:
+  - name: Victor Le
+    note: 2025, AI-Powered Drone Project at UH
+  - name: Angel Gomez
+    note: 2025, AI-Powered Drone Project at UH
+  - name: Hieu Le
+    note: 2025, AI-Powered Drone Project at UH
+  - name: Nicolas Upshaw
+    note: 2025, AI-Powered Drone Project at UH
+  - name: Yosef Abushaaban
+    note: 2025, AI-Powered Race Car Project at UH
+  - name: Muhammad Ansari
+    note: 2025, AI-Powered Race Car Project at UH
+  - name: Damian Castillo
+    note: 2025, AI-Powered Race Car Project at UH
+  - name: Asaad Elsayed
+    note: 2025, AI-Powered Race Car Project at UH
+  - name: Alejandro Zamarron
+    note: 2025, AI-Powered Race Car Project at UH
+  - name: Javier Caudle
+    note: 2024, Capstone project, Advanced Surveillance Drone, at UH
+  - name: Steven Comayagua
+    note: 2024, Capstone project, Advanced Surveillance Drone, at UH
+  - name: Leandra Guzman
+    note: 2024, Capstone project, Advanced Surveillance Drone, at UH
+  - name: Weijie Huang
+    note: 2024, Capstone project, Advanced Surveillance Drone, at UH
+  - name: Edward Perez
+    note: 2024, Capstone project, Advanced Surveillance Drone, at UH
+  - name: Kristof Siska
+    note: 2019–2022, RA funded by NSF, now a master's student at Old Dominion University
+  - name: Jacob Michalick
+    note: 2022, RA funded by DoD at ODU
+  - name: Skye Taylor
+    note: 2021, RA funded by NSF REU, now a master's student at the University of Virginia
+  - name: Joshua Smith
+    note: 2021, RA funded by NSF at ODU
+  - name: Andrew Vecerkauskas
+    note: 2020, RA funded by ONR at ODU
+  - name: Jeremy Sklute
+    note: "2020"
+  - name: Teresa Trinh
+    note: 2019, RA funded by ONR at ODU
+  - name: Zachariah Garvin
+    note: 2019, RA funded by ONR at ODU
+  - name: Thomas Sexton
+    note: 2019, RA funded by ONR at ODU
+  - name: Bryan Holland
+    note: 2019, RA funded by ONR at ODU
+  - name: Matthew Kersey
+    note: 2019, RA funded by ONR at ODU
+  - name: Victor Ortiz
+    note: "2018"
+
+join: >-
+  We are always looking for talented and motivated people who are passionate about research in intelligent and networked autonomous systems.
+  If you are interested, please contact Dr. Bin Hu about opportunities.
+
+acknowledgment: >-
+  We gratefully acknowledge the support of our funding agencies, the National Science Foundation (NSF), the National Aeronautics and Space
+  Administration (NASA), and the Office of Naval Research (ONR), as well as the NVIDIA Academic Grant Program, for enabling our research in
+  intelligent and networked autonomous systems.
+
+funders:
+  - name: National Science Foundation (NSF)
+    logo: nsf.png
+  - name: NASA
+    logo: nasa.png
+  - name: Office of Naval Research (ONR)
+    logo: onr.png
+  - name: NVIDIA Academic Grant Program
+    logo: nvidia.png

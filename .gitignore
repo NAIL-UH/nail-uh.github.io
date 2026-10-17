@@ -19,3 +19,6 @@ vendor
 # Python bytecode from bin/ helper scripts
 __pycache__/
 *.pyc
+
+# Private build kit for the lab site (brief with private links, render sources). Never publish.
+nail-site-kit/

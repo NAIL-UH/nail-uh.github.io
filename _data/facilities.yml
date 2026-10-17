@@ -1,0 +1,147 @@
+# Facilities page (_pages/facilities.md, rendered by _layouts/facilities.liquid).
+# Equipment photos live in assets/img/facilities/ as 640x480 (4:3) tiles.
+# `columns` (3 or 4) sets cards per row on wide screens; pick it so rows fill.
+# Video thumbnails live in assets/img/videos/<id>.jpg (960x540).
+
+intro: >-
+  The NAIL Lab is located in Engineering Building 4 (SAB2), Room 111, on the University of Houston Sugar Land campus. A heterogeneous
+  robot fleet, a motion-capture testing arena, a multi-GPU training server, and a wide range of edge-AI hardware let us take our methods
+  from simulation to real experiments, from learning-based control and multi-robot coordination to efficient perception on
+  microcontrollers.
+
+stats:
+  - value: "14"
+    label: aerial, ground, and legged robots
+  - value: "4"
+    label: NVIDIA RTX PRO 6000 Blackwell GPUs
+  - value: "22"
+    label: edge-AI boards and microcontrollers
+  - value: 24 × 24 × 8 ft
+    label: motion-capture volume
+
+arena:
+  title: Testing arena and lab space
+  image: testing-arena.jpg
+  alt: The testing arena, enclosed by safety netting with motion-capture cameras along the top, with a quadruped, three ground robots, a Jackal robot, and two drones on the floor.
+  text: >-
+    Our indoor testing arena is covered by an OptiTrack motion-capture system that tracks robots with sub-millimeter precision. The
+    enclosed space lets us safely test formation control, swarm behaviors, multi-robot collaboration, and human-robot interaction.
+  specs:
+    - label: Research space
+      value: 800 sq ft for graduate student research
+    - label: Testing arena
+      value: 300 sq ft, enclosed by safety netting
+    - label: Motion capture
+      value: 8 OptiTrack Flex 13 cameras, 24 × 24 × 8 ft volume
+    - label: Tracking capacity
+      value: Up to 14 objects at once
+    - label: Location
+      value: Engineering Building 4 (SAB2), Room 111, UH Sugar Land
+
+groups:
+  - id: aerial
+    title: Aerial robots
+    intro: Drones for multi-drone coordination, swarm, and edge-AI experiments.
+    columns: 4
+    items:
+      - name: ModalAI Seeker SLAM drone
+        count: 3
+        image: seeker-drone.jpg
+        text: Drones with onboard visual SLAM, navigation, and mapping, used for multi-drone coordination and swarm experiments.
+      - name: ModalAI Sentinel drone
+        count: 1
+        image: sentinel-drone.jpg
+        text: VOXL 2 development drone with 5G connectivity and onboard AI processing for edge-AI and high-bandwidth communication research.
+      - name: Crazyflie 2.1 Brushless AI bundle
+        count: 4
+        image: crazyflie.jpg
+        text: Nano quadcopters with an AI-deck for onboard neural network inference, used for swarm and edge-AI research.
+      - name: Self-assembled AI drone
+        count: 1
+        image: custom-drone.jpg
+        text: Drone designed and built in the lab for specialized experiments and rapid prototyping.
+
+  - id: ground
+    title: Ground and legged robots
+    intro: Wheeled and legged robots for formation control, multi-agent coordination, perception, and locomotion research.
+    columns: 3
+    items:
+      - name: ROSbot 2.0 Pro
+        count: 3
+        image: rosbot-2-pro.jpg
+        text: Ground robots with a full sensor suite for formation control and multi-agent coordination experiments.
+      - name: Clearpath Jackal J100
+        count: 1
+        image: jackal.jpg
+        text: Ground robot with a Velodyne VLP-16 3D lidar and an Intel RealSense D435 camera for perception and navigation research.
+      - name: Unitree Go2 quadruped
+        count: 1
+        image: unitree-go2.jpg
+        text: Legged robot for research on dynamic locomotion, balance control, and navigation over complex terrain.
+
+  - id: computing
+    title: Computing and edge AI
+    intro: A GPU server for training large models, and embedded boards for running them on board, in real time and on a power budget.
+    columns: 3
+    items:
+      - name: Custom AI server
+        count: 4
+        count_label: GPUs
+        image: ai-server.jpg
+        text: In-house server for large-scale training and inference with four NVIDIA RTX PRO 6000 Blackwell Max-Q GPUs, an AMD Ryzen Threadripper 9975WX (32 cores), 192 GB of DDR5-6400 memory, and a 4 TB NVMe SSD.
+      - name: NVIDIA Jetson AGX Orin 64 GB
+        count: 3
+        image: jetson-agx-orin.jpg
+        text: Developer kits with up to 275 TOPS of AI performance for onboard autonomy in robots and drones.
+      - name: NVIDIA Jetson Xavier NX
+        count: 1
+        image: jetson-xavier-nx.jpg
+        text: Compact module with 21 TOPS of accelerated computing for edge AI.
+      - name: NVIDIA Jetson Nano kits
+        count: 5
+        image: jetson-nano.jpg
+        text: Four Jetson Orin Nano kits and one original Jetson Nano for prototyping and deploying AI at the edge.
+      - name: MAX78000 and MAX78002 microcontrollers
+        count: 10
+        image: max78000.jpg
+        text: Ultra-low-power microcontrollers with a hardware CNN accelerator, used in our neural architecture search work. Six MAX78000 and two MAX78002 evaluation kits, and two MAX78000 Feather boards.
+      - name: STM32F746NG Discovery kits
+        count: 3
+        image: stm32f746.jpg
+        text: Arm Cortex-M7 boards with a touchscreen and Ethernet for embedded AI and systems development.
+
+  - id: sensors
+    title: Sensors and fabrication
+    intro: Sensors for perception experiments, beyond the motion-capture system above, and a 3D printer for building custom parts.
+    columns: 4
+    items:
+      - name: Intel RealSense D435i
+        count: 2
+        image: realsense-d435i.jpg
+        text: RGB-D cameras with a built-in IMU for depth sensing, visual odometry, and 3D perception.
+      - name: Livox Mid-360 lidar
+        count: 1
+        image: livox-mid360.jpg
+        text: 360° lidar that produces dense point clouds for mapping and navigation.
+      - name: Hokuyo UST-10LX
+        count: 1
+        image: hokuyo-ust10lx.jpg
+        text: Scanning laser rangefinder for precise distance measurement in navigation and mapping.
+      - name: Prusa MK4 3D printer
+        count: 1
+        image: prusa-mk4.jpg
+        text: Enclosed 3D printer for rapid prototyping and custom robot parts.
+
+# Equipment in action (YouTube video ids).
+videos:
+  - id: lwVmqo9jDYw
+    title: Autonomous drone landing on a moving ground robot
+    text: A drone lands on a moving ground vehicle, showing precise real-time control and communication between robots.
+  - id: rmnrWfe9tx8
+    title: Seeker drone mapping, motion planning, and object detection
+    text: The ModalAI Seeker drone builds a map with SLAM, plans its motion autonomously, and detects objects in real time.
+  - id: U8blNoet9O4
+    title: Fully autonomous Jackal robot
+    text: The Jackal robot runs SLAM, avoids moving obstacles, and detects objects indoors and outdoors.
+
+contact: For collaborations or access to lab resources, please contact Dr. Bin Hu.

@@ -1,0 +1,26 @@
+{%- comment -%}
+  One news item in the timeline. Pass item=<news document>.
+  The type (`kind` in front matter) sets the icon, label, and color. A leading
+  emoji shortcode such as :tada: is dropped, since the icon replaces it.
+{%- endcomment -%}
+{%- assign news_kind = include.item.kind | default: 'update' -%}
+{%- assign news_kind_info = site.data.news_kinds[news_kind] | default: site.data.news_kinds.update -%}
+<li class="nail-tl-item nk-{{ news_kind }}">
+  <span class="nail-tl-dot" aria-hidden="true"><i class="{{ news_kind_info.icon }}"></i></span>
+  <div class="nail-tl-body">
+    <div class="nail-tl-meta">
+      <span class="nail-tl-kind">{{ news_kind_info.label }}</span>
+      <time datetime="{{ include.item.date | date: '%Y-%m-%d' }}">{{ include.item.date | date: '%b %-d, %Y' }}</time>
+      {%- if include.item.pinned and include.show_pin %}
+        <i class="fa-solid fa-thumbtack nail-pin" aria-hidden="true" title="Pinned"></i><span class="sr-only">(pinned)</span>
+      {%- endif %}
+    </div>
+    <div class="nail-tl-text">
+      {%- if include.item.inline -%}
+        {{ include.item.content | remove: '<p>' | remove: '</p>' | strip | regex_replace: '^:[a-z0-9_+-]+:\s*', '' | emojify }}
+      {%- else -%}
+        <a class="news-title" href="{{ include.item.url | relative_url }}">{{ include.item.title }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</li>

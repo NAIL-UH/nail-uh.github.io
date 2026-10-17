@@ -1,0 +1,184 @@
+---
+layout: default
+---
+<div class="nail-home">
+  <!-- Intro: lab name on top, description below, all left-aligned -->
+  <section class="nail-hero" aria-labelledby="nail-title">
+    <h1 id="nail-title" class="nail-wordmark"><strong>NAIL</strong> Lab</h1>
+    <p class="nail-fullname">
+      Networked Autonomous and Intelligent Learning Lab<span class="nail-sep" aria-hidden="true"> &middot; </span><br class="nail-break">
+      University of Houston
+    </p>
+    <div class="nail-hero-text">{{ content }}</div>
+    <!-- The four research directions as equal tiles; each opens its page. -->
+    <ul class="nail-dir-grid" aria-label="Research directions">
+      {% for area in site.data.research.areas %}
+        <li class="nail-dir-tile">
+          <a href="{{ area.url | relative_url }}">
+            <span class="nail-dir-media">
+              <img src="{{ area.image | prepend: '/assets/img/research/' | relative_url }}" alt="" width="765" height="510">
+            </span>
+            <span class="nail-dir-body">
+              <span class="nail-dir-num">Direction {{ forloop.index }}</span>
+              <span class="nail-dir-title">{{ area.title }}</span>
+            </span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="nail-actions">
+      <a class="nail-btn nail-btn-filled" href="{{ '/join/' | relative_url }}">Join the lab</a>
+    </div>
+    {% if page.funders %}
+      <div class="nail-funders">
+        <p class="nail-funders-label" id="nail-funders-label">Supported by</p>
+        <ul class="nail-funder-logos" aria-labelledby="nail-funders-label">
+          {% for funder in page.funders %}
+            <li title="{{ funder.name | escape }}">
+              <img src="{{ funder.logo | prepend: '/assets/img/funders/' | relative_url }}" alt="{{ funder.name | escape }}" height="64">
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </section>
+
+  <!-- Recent research: three cards per row -->
+  <section class="nail-research" aria-labelledby="nail-recent">
+    <div class="nail-section-head">
+      <h2 id="nail-recent">Recent research</h2>
+      <a href="https://www.youtube.com/@NAIL-UH"><i class="fa-brands fa-youtube" aria-hidden="true"></i> All videos on YouTube</a>
+    </div>
+
+    <ul class="nail-cards">
+      {% for tile in site.data.highlights %}
+        {% assign media_path = tile.media | prepend: '/assets/img/publication_preview/' %}
+        {% assign media_ext = tile.media | split: '.' | last | downcase %}
+        <li class="nail-card">
+          {% if media_ext == 'mp4' %}
+            <div class="nail-card-media">
+              <video
+                class="nail-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                {% if tile.poster %}
+                  poster="{{ tile.poster | prepend: '/assets/img/publication_preview/' | relative_url }}"
+                {% endif %}
+                aria-label="{{ tile.alt | escape }}"
+              >
+                <source src="{{ media_path | relative_url }}" type="video/mp4">
+              </video>
+            </div>
+          {% else %}
+            <a class="nail-card-media" href="{{ tile.play_url | default: tile.links[0].url }}">
+              <img src="{{ media_path | relative_url }}" alt="{{ tile.alt | escape }}" loading="lazy">
+              {% if tile.play_url %}
+                <span class="nail-play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+              {% endif %}
+            </a>
+          {% endif %}
+
+          <div class="nail-card-body">
+            <span class="nail-badge">{{ tile.badge }}</span>
+            <h3>{{ tile.title }}</h3>
+            <p>{{ tile.description }}</p>
+            {% if tile.links %}
+              <div class="nail-card-links">
+                {% for link in tile.links %}
+                  {% case link.label %}
+                    {% when 'Paper' %}
+                      {% assign link_icon = 'fa-solid fa-file-lines' %}
+                    {% when 'Project page' %}
+                      {% assign link_icon = 'fa-solid fa-globe' %}
+                    {% when 'Code' %}
+                      {% assign link_icon = 'fa-brands fa-github' %}
+                    {% when 'Demo video' %}
+                      {% assign link_icon = 'fa-brands fa-youtube' %}
+                    {% else %}
+                      {% assign link_icon = 'fa-solid fa-link' %}
+                  {% endcase %}
+                  <a class="nail-chip" href="{{ link.url }}"><i class="{{ link_icon }}" aria-hidden="true"></i> {{ link.label }}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <!--
+    News. Items with `pinned: true` always appear in the top block; the
+    remaining top slots go to the newest other items, sorted by date.
+    Everything else follows, newest first, and scrolls inside the box.
+  -->
+  {% assign news_top = page.news_top | default: 5 %}
+  {% assign pinned_news = site.news | where: 'pinned', true %}
+  {% assign recent_news = site.news | where_exp: 'item', 'item.pinned != true' | reverse %}
+  {% assign recent_slots = news_top | minus: pinned_news.size %}
+  {% if recent_slots < 0 %}{% assign recent_slots = 0 %}{% endif %}
+  {% assign top_news = recent_news | slice: 0, recent_slots | concat: pinned_news | sort: 'date' | reverse %}
+  {% assign more_news = recent_news | slice: recent_slots, recent_news.size %}
+
+  <section class="nail-news" aria-labelledby="nail-news-title">
+    <div class="nail-section-head">
+      <h2 id="nail-news-title">News</h2>
+      <a href="{{ '/news/' | relative_url }}">All news</a>
+    </div>
+    <div
+      class="nail-news-scroll"
+      data-visible="{{ page.news_visible | default: 7 }}"
+      tabindex="0"
+      role="region"
+      aria-label="News. Scroll for older items."
+    >
+      <ol class="nail-timeline">
+        {% for item in top_news %}
+          {% include nail_news_item.liquid item=item show_pin=true %}
+        {% endfor %}
+        {% if more_news.size > 0 %}
+          <li class="nail-tl-divider"><span>More news</span></li>
+        {% endif %}
+        {% for item in more_news %}
+          {% include nail_news_item.liquid item=item %}
+        {% endfor %}
+      </ol>
+    </div>
+    <p class="nail-news-hint">Scroll the list for more news.</p>
+  </section>
+</div>
+
+<script>
+  (function () {
+    // With reduced motion requested, keep the videos still on their poster and
+    // let people start them with the native controls instead.
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('video.nail-video').forEach(function (video) {
+        video.removeAttribute('autoplay');
+        video.pause();
+        video.controls = true;
+      });
+    }
+
+    // Size the news box so exactly the first N items show; the rest scroll.
+    var box = document.querySelector('.nail-news-scroll');
+    if (!box) return;
+    function fitNews() {
+      var rows = box.querySelectorAll('li.nail-tl-item');
+      var visible = parseInt(box.getAttribute('data-visible'), 10) || 7;
+      if (rows.length <= visible) {
+        box.style.maxHeight = 'none';
+        return;
+      }
+      var bottom = rows[visible - 1].getBoundingClientRect().bottom;
+      var top = box.getBoundingClientRect().top;
+      box.style.maxHeight = Math.ceil(bottom - top + box.scrollTop + 2) + 'px';
+    }
+    fitNews();
+    window.addEventListener('load', fitNews);
+    window.addEventListener('resize', fitNews);
+  })();
+</script>

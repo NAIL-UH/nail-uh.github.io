@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2015-10-22 15:59:00-0400
+date: 2022-9-1
 inline: true
-related_posts: false
+kind: update
 ---
 
-A simple inline announcement.
+:rocket: After 3 years at ODU, Dr. Bin Hu joined the [Department of Engineering Technology](https://www.uh.edu/technology/departments/et/people/faculty/?l=hu&f=bin) at the University of Houston to continue his academic journey.
