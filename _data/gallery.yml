@@ -2,14 +2,44 @@
 # Each photo has a full-size image <image>.jpg and a 4:3 thumbnail
 # <image>-thumb.jpg in assets/img/gallery/; width and height are the full
 # image's size (needed by the PhotoSwipe viewer).
-# style: row (photos side by side), mosaic (first photo large, then four),
-# or feature (one photo beside its description).
+# style: row (four photos side by side), trio (three), pair (two),
+# mosaic (first photo large, then four), or feature (one photo beside its
+# description).
 
 intro: >-
   Moments from the NAIL Lab: conferences, group celebrations, and student milestones. Select a photo to view it full size, and use the
   arrows or swipe to browse.
 
 sections:
+  - id: iros-2026
+    title: IROS 2026 in Pittsburgh, Pennsylvania
+    text: >-
+      Richie Suganda presented "Formation-Aware Adaptive Conformalized Perception for Safe Leader–Follower Multi-Robot Systems" at the
+      2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) in Pittsburgh, Pennsylvania, along with the
+      late-breaking poster "Distributed 3D Leader–Follower Formation Control with Field-of-View Safety via Control Barrier Functions".
+    style: row
+    photos:
+      - image: iros2026-talk
+        width: 800
+        height: 600
+        title: Paper presentation
+        caption: Richie Suganda presents the paper at IROS 2026
+      - image: iros2026-with-poster
+        width: 840
+        height: 630
+        title: The poster
+        caption: Richie Suganda with the IROS 2026 paper's poster
+      - image: iros2026-poster
+        width: 728
+        height: 850
+        title: Poster session
+        caption: Richie Suganda discusses the poster with an attendee
+      - image: iros2026-lbs-poster
+        width: 1040
+        height: 780
+        title: Late-breaking poster
+        caption: Richie Suganda with the 3D leader–follower formation poster
+
   - id: icra-2025
     title: ICRA 2025 in Atlanta, Georgia
     text: NAIL Lab members presented their research at the IEEE International Conference on Robotics and Automation (ICRA) 2025 in Atlanta, Georgia.
