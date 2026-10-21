@@ -13,10 +13,7 @@ intro: >-
 sections:
   - id: iros-2026
     title: IROS 2026 in Pittsburgh, Pennsylvania
-    text: >-
-      Richie Suganda presented "Formation-Aware Adaptive Conformalized Perception for Safe Leader–Follower Multi-Robot Systems" at the
-      2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) in Pittsburgh, Pennsylvania, along with the
-      late-breaking poster "Distributed 3D Leader–Follower Formation Control with Field-of-View Safety via Control Barrier Functions".
+    text: NAIL Lab members presented their research at the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026 in Pittsburgh, Pennsylvania.
     style: row
     photos:
       - image: iros2026-talk
