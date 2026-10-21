@@ -51,6 +51,8 @@ phd:
     photo: benedictus-cinun.jpg
     website: https://bentuschristo.github.io/
     publications:
+      - label: arXiv 2026
+        url: https://nail-uh.github.io/rcra-website.github.io/
       - label: ACAP 2026
         url: https://onlinelibrary.wiley.com/doi/10.1002/adc2.70050
   - name: Immanuel Raynaldo Santjoko
@@ -61,6 +63,8 @@ phd:
     photo: immanuel-santjoko.jpg
     website: https://research.noelsadventure.my.id/
     publications:
+      - label: arXiv 2026
+        url: https://nail-uh.github.io/rcra-website.github.io/
       - label: IROS-LBS 2026
         url: https://nail-uh.github.io/3d-leader-follower-cbf.github.io/
       - label: ACAP 2026
