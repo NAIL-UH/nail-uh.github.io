@@ -1,5 +1,5 @@
-# Research highlights on the home page, in display order: three per row on
-# desktop, two on tablets, one on phones.
+# Research highlights on the home page, in display order (left to right, top to
+# bottom): three per row on desktop, two on tablets, one on phones.
 #
 # media:       a file in assets/img/publication_preview/. An .mp4 plays muted on a
 #              loop; anything else is shown as an image.
@@ -24,17 +24,17 @@
     - label: Project page
       url: https://nail-uh.github.io/corl2026.github.io/
 
-- media: irosLBS2026-onboard-perception.mp4
-  poster: irosLBS2026-onboard-perception.jpg
-  alt: ModalAI drone experiments with onboard perception only, first with and without the safety filter, then compared with perception-aware IBVS
-  badge: IROS-LBS 2026
-  title: 3D leader-follower flight with camera safety
-  description: "Keeps the leader in each follower drone's camera view using onboard perception only. Cuts formation-tracking error by 36.7–54.2% versus IBVS and holds visibility where an unfiltered controller loses the leader."
+- media: arxiv2026-safter-go2.mp4
+  poster: arxiv2026-safter-go2.jpg
+  alt: A Unitree Go2 quadruped navigating among red obstacles in the lab; a baseline policy knocks one over, then SAFTER brakes near an obstacle and reaches the goal
+  badge: CoRL-WS 2026
+  title: "SAFTER: recoverability-aware safe reinforcement learning"
+  description: "Trains RL through a differentiable, closed-form backup-CBF filter that certifies recoverability. Learns with 34–35% fewer samples than CBF-filtered RL and lifts safe-navigation success on unseen maps by up to 61.4 points over state-of-the-art methods."
   links:
     - label: Paper
-      url: https://arxiv.org/pdf/2605.17533.pdf
+      url: https://arxiv.org/abs/2610.29149
     - label: Project page
-      url: https://nail-uh.github.io/3d-leader-follower-cbf.github.io/
+      url: https://nail-uh.github.io/SAFTER.github.io/
 
 - media: iros2026-3robot-formation.mp4
   poster: iros2026-3robot-formation.jpg
@@ -48,17 +48,17 @@
     - label: Project page
       url: https://nail-uh.github.io/iros2026.github.io/
 
-- media: icra2025-llm-drone.mp4
-  poster: icra2025-llm-drone.jpg
-  alt: After a typed language command, a lab drone flies to a chair and an umbrella and then returns home, with its onboard camera view and detections inset
-  badge: ICRA-LBS 2025
-  title: LLM-guided drone navigation and object detection
-  description: "Turns a natural-language command into a multi-step drone mission. A 1B-parameter Llama model, LoRA-tuned on 4,500 prompts (about 3.5% of its weights), plans the flight while onboard detection runs at up to about 25 FPS."
+- media: irosLBS2026-onboard-perception.mp4
+  poster: irosLBS2026-onboard-perception.jpg
+  alt: ModalAI drone experiments with onboard perception only, first with and without the safety filter, then compared with perception-aware IBVS
+  badge: IROS-LBS 2026
+  title: 3D leader-follower flight with camera safety
+  description: "Keeps the leader in each follower drone's camera view using onboard perception only. Cuts formation-tracking error by 36.7–54.2% versus IBVS and holds visibility where an unfiltered controller loses the leader."
   links:
-    - label: Demo video
-      url: https://www.youtube.com/watch?v=uHh0LyTN1c0
-    - label: Poster
-      url: /assets/pdf/LLM.pdf
+    - label: Paper
+      url: https://arxiv.org/pdf/2605.17533.pdf
+    - label: Project page
+      url: https://nail-uh.github.io/3d-leader-follower-cbf.github.io/
 
 - media: tc2026-elastic-max78000.mp4
   poster: tc2026-elastic-max78000.jpg
@@ -72,14 +72,14 @@
     - label: Project page
       url: https://nail-uh.github.io/elastic.github.io/
 
-- media: icra2025-rosbot-leader-follower.mp4
-  poster: icra2025-rosbot-leader-follower.jpg
-  alt: Two ROSbot robots in a leader-follower run in the lab, with the follower's camera view inset
-  badge: ICRA 2025
-  title: Perception-aware safe leader-follower control
-  description: "Treats each follower camera's limited field of view as a safety constraint, so robots keep their leader in sight. In simulation it holds formations where the baseline controller fails."
+- media: icra2025-llm-drone.mp4
+  poster: icra2025-llm-drone.jpg
+  alt: After a typed language command, a lab drone flies to a chair and an umbrella and then returns home, with its onboard camera view and detections inset
+  badge: ICRA-LBS 2025
+  title: LLM-guided drone navigation and object detection
+  description: "Turns a natural-language command into a multi-step drone mission. A 1B-parameter Llama model, LoRA-tuned on 4,500 prompts (about 3.5% of its weights), plans the flight while onboard detection runs at up to about 25 FPS."
   links:
-    - label: Paper
-      url: https://arxiv.org/abs/2409.11394
-    - label: Project page
-      url: https://nail-uh.github.io/icra25.github.io/
+    - label: Demo video
+      url: https://www.youtube.com/watch?v=uHh0LyTN1c0
+    - label: Poster
+      url: /assets/pdf/LLM.pdf
