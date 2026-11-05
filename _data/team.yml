@@ -51,9 +51,9 @@ phd:
     photo: benedictus-cinun.jpg
     website: https://bentuschristo.github.io/
     publications:
-      - label: arXiv 2026 · SAFTER
+      - label: CoRL-WS 2026 · SAFTER
         url: https://nail-uh.github.io/SAFTER.github.io/
-      - label: arXiv 2026 · RCRA
+      - label: CoRL-WS 2026 · RCRA
         url: https://nail-uh.github.io/rcra-website.github.io/
       - label: ACAP 2026
         url: https://onlinelibrary.wiley.com/doi/10.1002/adc2.70050
@@ -65,7 +65,7 @@ phd:
     photo: immanuel-santjoko.jpg
     website: https://research.noelsadventure.my.id/
     publications:
-      - label: arXiv 2026 · RCRA
+      - label: CoRL-WS 2026 · RCRA
         url: https://nail-uh.github.io/rcra-website.github.io/
       - label: IROS-LBS 2026
         url: https://nail-uh.github.io/3d-leader-follower-cbf.github.io/
@@ -77,6 +77,9 @@ phd:
     research: Efficient Embodied AI
     description: Developing energy-efficient foundation models for embodied AI, enabling real-time perception and control on resource-constrained edge devices and robotic platforms.
     photo: vieri-akustia.jpg
+    publications:
+      - label: CoRL-WS 2026 · ASPEN
+        url: https://arxiv.org/abs/2610.36285
 
 # Master's students; the section is hidden while this list is empty.
 masters: []
