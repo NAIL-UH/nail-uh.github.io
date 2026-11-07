@@ -79,7 +79,7 @@ phd:
     photo: vieri-akustia.jpg
     publications:
       - label: CoRL-WS 2026 · ASPEN
-        url: https://arxiv.org/abs/2610.36285
+        url: https://nail-uh.github.io/ASPEN.github.io/
 
 # Master's students; the section is hidden while this list is empty.
 masters: []
