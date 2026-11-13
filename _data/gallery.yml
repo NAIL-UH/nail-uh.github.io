@@ -11,6 +11,32 @@ intro: >-
   arrows or swipe to browse.
 
 sections:
+  - id: corl-2026
+    title: CoRL 2026 in Austin, Texas
+    text: NAIL Lab members presented one main-conference paper and three workshop papers at the Conference on Robot Learning (CoRL) 2026 in Austin, Texas.
+    style: row
+    photos:
+      - image: corl2026-cert-replan
+        width: 1755
+        height: 885
+        title: CERT-Replan · Main conference
+        caption: Richie Suganda (left) discusses CERT-Replan with attendees
+      - image: corl2026-safter
+        width: 1505
+        height: 1140
+        title: SAFTER · WEBP workshop
+        caption: Benedictus Cinun with the SAFTER poster
+      - image: corl2026-rcra
+        width: 1530
+        height: 810
+        title: RCRA · HumanRLI workshop
+        caption: Immanuel Santjoko with the RCRA poster
+      - image: corl2026-aspen
+        width: 1975
+        height: 1061
+        title: ASPEN · EEAI workshop
+        caption: Vieri Akustia with the ASPEN poster
+
   - id: iros-2026
     title: IROS 2026 in Pittsburgh, Pennsylvania
     text: NAIL Lab members presented their research at the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026 in Pittsburgh, Pennsylvania.

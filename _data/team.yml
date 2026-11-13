@@ -4,6 +4,8 @@
 
 # Photo carousel at the top of the page (16:9 images).
 slides:
+  - image: slide-corl-2026.jpg
+    caption: NAIL group at CoRL 2026 in Austin, Texas
   - image: slide-lunch-2026.jpg
     caption: NAIL group lunch, celebrating Spring 2026 and Tony's graduation
   - image: slide-group-2025.jpg

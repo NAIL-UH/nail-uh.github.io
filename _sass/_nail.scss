@@ -1448,10 +1448,11 @@ a.nail-area-more {
     object-fit: cover;
   }
 
+  // Right padding keeps the caption clear of up to six pagination bullets.
   figcaption {
     position: absolute;
     inset: auto 0 0 0;
-    padding: 2.5rem 6.5rem 1rem 1.1rem;
+    padding: 2.5rem 7.5rem 1rem 1.1rem;
     background: linear-gradient(to top, rgba(9, 8, 28, 0.78), rgba(9, 8, 28, 0));
     color: #fff;
     font-size: 0.95rem;
@@ -1753,7 +1754,6 @@ a.nail-area-more {
   }
 
   .nail-team-slide figcaption {
-    padding-right: 5.5rem;
     font-size: 0.85rem;
   }
 }
